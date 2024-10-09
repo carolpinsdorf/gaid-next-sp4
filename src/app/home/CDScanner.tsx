@@ -8,11 +8,9 @@ export default function CDScanner(){
         <CDScannerContainer>
             <div className="div-texto">
                 <p>
-                        O CarDiag Scanner é como um médico <br /> para o seu carro. <br />
-                    Conecte-o ao veículo e deixe-o cuidar da <br />
-                    saúde automotiva. <br />
-                    Ele monitora constantemente, <br />
-                    identificando problemas antes que se <br /> tornem grandes
+                        O CarDiag Scanner é como um médico para o seu carro. <br />
+                    Conecte-o ao veículo e deixe-o cuidar da saúde automotiva. Ele monitora constantemente, 
+                    identificando problemas antes que se tornem grandes
                     preocupações.
                 </p>
             </div>

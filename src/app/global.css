@@ -4,5 +4,6 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     background-color: black;
-    color: white;
+    color: #9e9e9e;
+    line-height: 1.5;
   }

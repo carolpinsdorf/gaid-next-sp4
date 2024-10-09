@@ -61,20 +61,24 @@ export const NavContainer = styled.nav`
         list-style: none;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content:right;
         align-items: center;
         padding: 13px;
-        background-color: rgba(74, 144, 226, 0.2);
+        //background-color: rgba(74, 144, 226, 0.1);
         animation: ${fadeIn} 0.5s ease-in;
-
+        
         li {
+            //border: solid 3px #9e9e9e;
+            border-radius: 5px;
             position: relative; /* Necessário para o pseudo-elemento */
             font-weight: lighter;
             font-size: 16px;
             color: #9e9e9e;
             cursor: pointer;
             animation: ${fadeIn} 1s ease-in;
-            background-color: rgba(74, 144, 226, 0.02);
+            background-color: rgba(74, 144, 226, 0.2);
+            padding:  10px 20px;
+            margin: 0 3%;
             
             a{
                 background-color: rgba(74, 144, 226, 0.02);

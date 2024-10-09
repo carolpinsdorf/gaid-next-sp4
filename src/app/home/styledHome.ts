@@ -154,8 +154,11 @@ export const CDScannerContainer = styled.section`
     .div-texto{
         width: 100vw;
         height: 50%;
-        margin-top: 10%;
+        //background-color: red;
+        display: flex;
+        align-items: center;
         p{
+            padding: 0 10% 0;
             text-align: center;
             font-size: 30px;
             font-weight: 100;
@@ -217,3 +220,50 @@ export const EmpresaContainer = styled.section`
 `;
 
 //                                                      Estilizando o container do Suporte
+export const SuporteContainer = styled.section`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        padding:10px;
+        margin-bottom: 2%;
+        font-size: 40px;
+        font-weight: 100;
+        color: #9e9e9e;
+
+    }
+
+    .div-box{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        //background-color: #9e9e9e;
+        justify-content: space-evenly;
+        align-items: center;
+
+        img{
+            width: 40%;
+            height: auto;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            p{
+                text-align: center;
+                font-size: 25px;
+                font-weight: 100;
+                color: #9e9e9e;
+                
+            }
+        }
+    }
+`;
