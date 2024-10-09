@@ -2,7 +2,7 @@
 import {HeaderContainer} from './styled'
 import Image from 'next/image'; 
 import Link from 'next/link';
-import logoGaid from '../app/assets/logo.png';
+import logoGaid from '../app/assets/logohr.png';
 import loginIcon from '../app/assets/iconLogin.png';
 
 
@@ -10,11 +10,11 @@ import loginIcon from '../app/assets/iconLogin.png';
 export default function Cabecalho() {
   return (
     <HeaderContainer>
-      <div>
+      <div className='div-logoGaid'>
         <Link href="/">
             <Image src={logoGaid} alt="Logo da empresa"/>
         </Link>
-        <h1>GAID</h1>
+      
       </div>
       
       <div>

@@ -49,6 +49,9 @@ export const HeaderContainer = styled.header`
 
         }
     }
+    .div-logoGaid{
+        padding: 10px 5px;
+    }
   
 `;
 
@@ -68,7 +71,7 @@ export const NavContainer = styled.nav`
         animation: ${fadeIn} 0.5s ease-in;
         
         li {
-            //border: solid 3px #9e9e9e;
+            border: solid 3px #9e9e9e;
             border-radius: 5px;
             position: relative; /* Necessário para o pseudo-elemento */
             font-weight: lighter;
@@ -76,7 +79,7 @@ export const NavContainer = styled.nav`
             color: #9e9e9e;
             cursor: pointer;
             animation: ${fadeIn} 1s ease-in;
-            background-color: rgba(74, 144, 226, 0.2);
+            //background-color: rgba(74, 144, 226, 0.2);
             padding:  10px 20px;
             margin: 0 3%;
             
