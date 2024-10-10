@@ -84,6 +84,23 @@ export const CarDiagContainer = styled.section`
             height: auto;
         }
     }
+
+    /* Media Queries */
+    @media (max-width: 1024px) {
+        flex-direction: column; /* Muda para coluna em tablets */
+        .div-img, .div-texto {
+            width: 100%; /* Largura total em tablets */
+        }
+    }
+
+    @media (max-width: 600px) {
+        .div-img, .div-texto {
+            padding: 10px; /* Padding menor em mobile */
+        }
+        p {
+            font-size: 30px; /* Reduz o tamanho da fonte em mobile */
+        }
+    }
     
 `;
 
@@ -181,13 +198,20 @@ export const EmpresaContainer = styled.section`
     }
     .div-texto{
         margin-top: 20px;
+        display: flex;
+        justify-content: center;
+
         h1{
+            width: fit-content;
+            height: auto;
             margin-top: 50px;
             font-size: 40px;
             font-weight: 100;
             color: #9e9e9e;
             text-align: center;
-            padding: 30px;
+            padding: 10px;
+            border: solid 3px rgba(74, 144, 240, 1);
+            border-radius: 5px;
         }
     }
     .div-desc{
@@ -234,7 +258,8 @@ export const SuporteContainer = styled.section`
         font-size: 40px;
         font-weight: 100;
         color: #9e9e9e;
-
+        border: solid 3px rgba(74, 144, 240, 1);
+        border-radius: 5px;
     }
 
     .div-box{
