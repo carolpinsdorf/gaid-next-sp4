@@ -49,7 +49,10 @@ export const CarDiagContainer = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
     height: 100vh;
+
 
     .div-img{
         width: 48%;
@@ -73,7 +76,7 @@ export const CarDiagContainer = styled.section`
 
         p{
             text-align: center;
-            font-size: 50px;
+            font-size: 3.5vw;
             font-weight: 100;
             color: #9e9e9e;
         }
@@ -85,23 +88,28 @@ export const CarDiagContainer = styled.section`
         }
     }
 
-    /* Media Queries */
-    @media (max-width: 1024px) {
-        flex-direction: column; /* Muda para coluna em tablets */
-        .div-img, .div-texto {
-            width: 100%; /* Largura total em tablets */
+    @media (max-width: 782px) { /* Tablets e Mobile */
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        .div-img{
+            img{
+                display: none;
+            }
         }
-    }
+        .div-texto{
+            margin-top: 10%;
+            justify-content: center;
+            align-items: center;
+            img{
+                margin: auto;
+            }
+            .div-porto{
+                display: flex;
+            }
+        }
 
-    @media (max-width: 600px) {
-        .div-img, .div-texto {
-            padding: 10px; /* Padding menor em mobile */
-        }
-        p {
-            font-size: 30px; /* Reduz o tamanho da fonte em mobile */
-        }
     }
-    
 `;
 
 //                                                      Estilizando o container do Galdi
@@ -110,10 +118,13 @@ export const GaldiContainer = styled.section`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    height: 100vh;
+    margin-top: 10%;
+    
 
     .div-video{
-        height: 100vh;
+        height: auto;
         width: 30%;
         //background-color: violet;
         display: flex;
@@ -145,10 +156,30 @@ export const GaldiContainer = styled.section`
 
         p{
             text-align: right;
-            font-size: 40px;
+            font-size: 3.5vw;
             font-weight: 100;
             color: #9e9e9e;
         }
+    }
+
+    @media (max-width: 782px) { /* Tablets e Mobile */
+        display: flex;
+        flex-wrap: wrap;
+        height: fit-content;
+        margin-top: 10%;
+
+        .div-video{
+            width: fit-content;
+            height: auto;
+            video{
+                width: 70%;
+            }
+        }
+        .div-img, .div-p{
+            margin-top: 10%;
+            width: 50%;
+        }
+
     }
 `;
 
@@ -158,7 +189,9 @@ export const CDScannerContainer = styled.section`
     height: 100vh;
     display: flex;
     flex-direction: column;
-
+    height: 100vh;
+    margin-top: 10%;
+    
     .div-img{
         width: 100vw;
         height: 50%;
@@ -177,10 +210,17 @@ export const CDScannerContainer = styled.section`
         p{
             padding: 0 10% 0;
             text-align: center;
-            font-size: 30px;
+            font-size: 2.5vw;
             font-weight: 100;
             color: #9e9e9e;
         }
+    }
+
+    @media (max-width: 782px) { /* Tablets e Mobile */
+        display: flex;
+        flex-wrap: wrap;
+        height: fit-content;
+        margin-top: 10%;
     }
 `;
 
@@ -188,10 +228,13 @@ export const CDScannerContainer = styled.section`
 export const EmpresaContainer = styled.section`
     height: 100vh;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;    
 
     .div-carrossel{
         padding: 10px;
-        height: 80vh;
+        height: fit-content;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -204,8 +247,8 @@ export const EmpresaContainer = styled.section`
         h1{
             width: fit-content;
             height: auto;
-            margin-top: 50px;
-            font-size: 40px;
+            margin: 5%;
+            font-size: 2.5vw;
             font-weight: 100;
             color: #9e9e9e;
             text-align: center;
@@ -227,7 +270,7 @@ export const EmpresaContainer = styled.section`
 
         .frase, .nome{
             padding: 10px;
-            font-size:35px;
+            font-size: 2vw;
             font-weight: 100;
             color: #9e9e9e;
         }
@@ -241,6 +284,14 @@ export const EmpresaContainer = styled.section`
         }
 
     }
+
+    @media (max-width: 782px) { /* Tablets e Mobile */
+        height: fit-content;
+        margin-top: 10%;
+        .div-desc{
+            padding: 5px;
+        }
+    }
 `;
 
 //                                                      Estilizando o container do Suporte
@@ -252,10 +303,11 @@ export const SuporteContainer = styled.section`
     justify-content: center;
     align-items: center;
 
+
     h1{
         padding:10px;
         margin-bottom: 2%;
-        font-size: 40px;
+        font-size: 2.5vw;
         font-weight: 100;
         color: #9e9e9e;
         border: solid 3px rgba(74, 144, 240, 1);
@@ -273,7 +325,7 @@ export const SuporteContainer = styled.section`
         align-items: center;
 
         img{
-            width: 40%;
+            width: 35%;
             height: auto;
         }
         div{
@@ -284,11 +336,20 @@ export const SuporteContainer = styled.section`
             
             p{
                 text-align: center;
-                font-size: 25px;
+                font-size: 1.5vw;
                 font-weight: 100;
                 color: #9e9e9e;
                 
             }
         }
     }
+    @media (max-width: 782px) { /* Tablets e Mobile */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 400px;
+        margin-top: 10%;
+        margin-bottom: 400px;
+    }
+   
 `;

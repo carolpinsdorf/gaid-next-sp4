@@ -33,6 +33,7 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.5s ease-in-out;
+    height:auto;
 
     &:hover {
         z-index: 1; /* Garante que a imagem aumentada fique na frente */
@@ -51,7 +52,7 @@ export default function Empresa() {
                     spaceBetween={0}  // Espaço entre os slides
                     slidesPerView={1.05}  // Mostra 2.5 slides por vez
                     navigation
-                    pagination={{ clickable: true }}
+                    
                     loop={true}
                     centeredSlides={false}  // Centraliza o slide ativo
                 >

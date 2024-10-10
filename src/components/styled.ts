@@ -69,7 +69,7 @@ export const NavContainer = styled.nav`
         height: 0; /* Oculte o menu completamente quando fechado */
         
         li {
-            border: solid 3px rgba(74, 144, 240, 1);
+            border: solid 2px rgba(74, 144, 240, 1);
             border-radius: 5px;
             position: relative; /* Necessário para o pseudo-elemento */
             font-weight: lighter;
