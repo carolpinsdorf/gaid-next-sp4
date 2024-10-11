@@ -20,7 +20,7 @@ export default function Galdi(){
 
             <div className="div-p">
                 <p>
-                    Em uma breve conversa o Galdí, você pode dianosticar seu problema, orçar o reparo e agendá-lo.
+                    Em uma breve conversa o <span style={{ color: "#3caaea", fontWeight: "500" }}>Galdí</span>, você pode <span style={{ color: "#3caaea" }}>dianosticar</span> seu problema, <span style={{ color: "#3caaea" }}>orçar</span> o reparo e <span style={{ color: "#3caaea" }}>agendá-lo</span>.
                     <br/> Tudo em questão de segundos
                 </p>
             </div>

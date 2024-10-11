@@ -69,7 +69,7 @@ export const NavContainer = styled.nav`
         height: 0; /* Oculte o menu completamente quando fechado */
         
         li {
-            border: solid 2px rgba(74, 144, 240, 1);
+            border: solid 2px #3caaea;
             border-radius: 5px;
             position: relative; /* Necessário para o pseudo-elemento */
             font-weight: lighter;
@@ -225,5 +225,27 @@ export const FooterContainer = styled.footer`
         div {
             padding: 20px;
         }
+    }
+`;
+
+//                                      Estilos para o botão VoltarAoTopo
+ export const TopoButton = styled.button<{ visible: boolean }>`
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3caaea;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+    opacity: ${(props) => (props.visible ? "1" : "0")};
+    pointer-events: ${(props) => (props.visible ? "auto" : "none")}; /* Evita clique quando invisível */
+
+    &:hover {
+        background-color: #2b8ac3;
     }
 `;

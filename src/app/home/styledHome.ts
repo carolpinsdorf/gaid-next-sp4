@@ -156,7 +156,7 @@ export const GaldiContainer = styled.section`
 
         p{
             text-align: right;
-            font-size: 3.5vw;
+            font-size: 2.5vw;
             font-weight: 100;
             color: #9e9e9e;
         }

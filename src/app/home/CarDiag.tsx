@@ -4,15 +4,14 @@ import {CarDiagContainer} from "./styledHome";
 import logoPorto from '../assets/logoMarcaPorto.png'
 import logoOxigenio from "../assets/logoOxigenio.png"
 
-
 export default function CarDiag(){
 
     return(
         <CarDiagContainer>
             <div className="div-texto">
                 <p>
-                    Otimize seu tempo <br /> com a GAID: a <br /> solução definitiva{" "}
-                    <br /> para auto-diagnóstico e <br /> orçamentos
+                    Otimize seu tempo <br /> com a <span style={{ color: "#3caaea", fontWeight: "500" }}>GAID</span>: a <br /> solução definitiva{" "}
+                    <br /> para <span style={{ color: "#3caaea" }}>auto-diagnóstico</span> e <br /> <span style={{ color: "#3caaea" }}>orçamentos</span>
                 </p>
                 <div className="div-porto">
                     <Image src={logoPorto} alt="Logo Porto Seguro"></Image>

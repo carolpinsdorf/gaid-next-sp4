@@ -6,6 +6,7 @@ import Galdi from "./home/Galdi";
 import CDScanner from "./home/CDScanner";
 import Empresa from "./home/Empresa";
 import Suporte from "./home/Suporte";
+import VoltarAoTopo from "@/components/VoltarAoTopo";
 
 
 
@@ -23,6 +24,8 @@ export default function Home() {
       <div id="empresa" className="section"> <Empresa/> </div>
 
       <div id="suporte" className="section"> <Suporte/> </div>
+
+      <VoltarAoTopo/>
 
     </HomeContainer>
 
