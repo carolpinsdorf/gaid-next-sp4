@@ -155,6 +155,10 @@ export const MainLogin = styled.main`
         .div-login{
             width: 100vw;
 
+            form{
+                width: 70%;
+            }
+
         }
         .div-img{
             display: none;
@@ -165,6 +169,13 @@ export const MainLogin = styled.main`
         }
         p{
             width: 80vw;
+        }
+    }
+    @media (max-width:983px){
+        .div-login{
+            h1{
+                font-size: 25px;
+            }
         }
     }
     
