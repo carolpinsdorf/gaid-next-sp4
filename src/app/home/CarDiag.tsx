@@ -1,8 +1,8 @@
 import Image from "next/image";
-import bgCardiag from "../assets/hero1.png";
+import bgCardiag from "@/../public/assets/hero1.png";
 import {CarDiagContainer} from "./styledHome";
-import logoPorto from '../assets/logoMarcaPorto.png'
-import logoOxigenio from "../assets/logoOxigenio.png"
+import logoPorto from '@/../public/assets/logoMarcaPorto.png'
+import logoOxigenio from "@/../public/assets/logoOxigenio.png"
 
 export default function CarDiag(){
 

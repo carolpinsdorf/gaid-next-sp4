@@ -1,4 +1,4 @@
-import iconGaldi from "../assets/iconGaldi.png"
+import iconGaldi from "@/../public/assets/iconGaldi.png"
 import {GaldiContainer} from './styledHome'
 import Image from "next/image"
 

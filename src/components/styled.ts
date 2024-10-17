@@ -38,7 +38,8 @@ export const HeaderContainer = styled.header`
 
         };
         img:hover, h1:hover{
-            scale: 1.09;
+            scale: 1.1;
+            transition: 0.3s ease-in-out;
         }
     }
     .div-logoGaid{
@@ -229,7 +230,7 @@ export const FooterContainer = styled.footer`
 `;
 
 //                                      Estilos para o botão VoltarAoTopo
- export const TopoButton = styled.button<{ visible: boolean }>`
+ export const TopoButton = styled.button<{ $visible: boolean }>`
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -242,10 +243,11 @@ export const FooterContainer = styled.footer`
     cursor: pointer;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: opacity 0.3s ease-in-out;
-    opacity: ${(props) => (props.visible ? "1" : "0")};
-    pointer-events: ${(props) => (props.visible ? "auto" : "none")}; /* Evita clique quando invisível */
+    opacity: ${(props) => (props.$visible ? "1" : "0")};
+    pointer-events: ${(props) => (props.$visible ? "auto" : "none")}; /* Evita clique quando invisível */
 
     &:hover {
         background-color: #2b8ac3;
+        transition: 0.3s ease-in-out;
     }
 `;

@@ -1,4 +1,4 @@
-import imgCDScanner from '../assets/hero3.png'
+import imgCDScanner from '@/../public/assets/hero3.png'
 import Image from 'next/image'
 import {CDScannerContainer} from "./styledHome"
 

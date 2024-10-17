@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ApiResponse } from '@/types';
 import { useRouter } from 'next/navigation';
 import {MainCadastro} from './styledCad'
+import Link from 'next/link';
 
 export default function Cadastro() {
 
@@ -123,6 +124,10 @@ export default function Cadastro() {
 
                 <button type="submit">Cadastrar</button>
             </form>
+            <div>
+                <p>Já tem uma conta?</p>
+                <Link href={'/login'}>Conecte-se</Link>
+            </div>
 
             {mensagem && <p>{mensagem}</p>}
         </MainCadastro>

@@ -6,9 +6,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import styled from 'styled-components';
 import Image from 'next/image';
-import img1 from '../assets/person1.png'; 
-import img2 from '../assets/person2.png'; 
-import img3 from '../assets/person3.png'; 
+import img1 from '@/../public/assets/person1.png'; 
+import img2 from '@/../public/assets/person2.png'; 
+import img3 from '@/../public/assets/person3.png'; 
 
 const profiles = [
     { img: img1, github: 'https://github.com/RafaellSouzaPinto', nome: 'Rafael Souza', frase: 'Apaixonado por tecnologia e focado em desenvolver soluções com impacto positivo.' },

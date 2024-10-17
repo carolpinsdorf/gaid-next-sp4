@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Acesso, ApiResponse } from '@/types';
 import Link from 'next/link';
 import {MainLogin} from './styledLogin'
+import imgLogin from '@/../public/assets/hero2.png'
+import Image from 'next/image';
 
 export default function Login() {
     // Usando o tipo Acesso para tipar os campos de login
@@ -43,30 +45,35 @@ export default function Login() {
 
     return (
         <MainLogin>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="username"
-                    value={acesso.username}
-                    onChange={handleInputChange}
-                    placeholder="Username"
-                    required
-                />
-                <input
-                    type="password"
-                    name="senha"
-                    value={acesso.senha}
-                    onChange={handleInputChange}
-                    placeholder="Senha"
-                    required
-                />
-                <button type="submit">Entrar</button>
-            </form>
-            {mensagem && <p>{mensagem}</p>}
-            <div className='div-cadastro'>
-                <p>Não tem uma conta?</p>
-                <Link href={'/cadastro'}>Cadastre-se</Link>
+            <div className='div-login'>
+                <h1>Login</h1>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="username"
+                        value={acesso.username}
+                        onChange={handleInputChange}
+                        placeholder="Username"
+                        required
+                    />
+                    <input
+                        type="password"
+                        name="senha"
+                        value={acesso.senha}
+                        onChange={handleInputChange}
+                        placeholder="Senha"
+                        required
+                    />
+                    <button type="submit">Entrar</button>
+                </form>
+                {mensagem && <p>{mensagem}</p>}
+                <div className='div-cadastro'>
+                    <p>Não tem uma conta?</p>
+                    <Link href={'/cadastro'}>Cadastre-se</Link>
+                </div>
+            </div>
+            <div className='div-img'>
+                <Image src={imgLogin} alt="Imagem de um mulher do lado de seu carro numa garagem"></Image>
             </div>
         </MainLogin>
     );

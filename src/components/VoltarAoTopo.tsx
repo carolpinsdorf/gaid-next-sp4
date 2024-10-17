@@ -27,7 +27,7 @@ export default function VoltarAoTopo() {
   }, []);
 
   return (
-    <TopoButton onClick={scrollToTop} visible={visible}>
+    <TopoButton onClick={scrollToTop} $visible={visible}>
       ↑ Topo
     </TopoButton>
   );

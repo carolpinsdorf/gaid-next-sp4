@@ -1,8 +1,8 @@
 
 import Image from "next/image";
-import iconCall from "../assets/iconCall.png"
-import iconMail from "../assets/iconEmail.png"
-import iconeShop from "../assets/iconShop.png"
+import iconCall from "../../../public/assets/iconCall.png"
+import iconMail from "@/../public/assets/iconEmail.png"
+import iconeShop from "@/../public/assets/iconShop.png"
 import {SuporteContainer} from './styledHome'
 
 export default function Suporte(){

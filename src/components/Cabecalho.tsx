@@ -1,9 +1,9 @@
-"use client";
+'use client'
 import {HeaderContainer} from './styled'
 import Image from 'next/image'; 
 import Link from 'next/link';
-import logoGaid from '../app/assets/logohr.png';
-import loginIcon from '../app/assets/iconLogin.png';
+import logoGaid from '@/../public/assets/logohr.png';
+import loginIcon from '@/../public/assets/iconLogin.png';
 
 
 
@@ -12,7 +12,7 @@ export default function Cabecalho() {
     <HeaderContainer>
       <div className='div-logoGaid'>
         <Link href="/">
-            <Image src={logoGaid} alt="Logo da empresa"/>
+            <Image src={logoGaid} alt="Logo da empresa" priority/>
         </Link>
       
       </div>

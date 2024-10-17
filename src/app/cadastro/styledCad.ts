@@ -31,12 +31,24 @@ export const MainCadastro = styled.main`
     p{
         //background-color: red;
         width: 30%;
-        margin: auto;
+        margin: 2rem auto;
         text-align: center;
         font-size: 20px;
-        margin-bottom: 2rem;
         animation: ${fadeIn} 2s ease-in-out;
     }
+    a{
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        margin: 1rem auto 3rem;
+        font-size: 20px;
+        animation: ${fadeIn} 2s ease-in-out;
+    }
+    a:hover{
+        scale: 1.1;
+        transition: 0.3s ease-in-out;
+        color: #3ba8e7;
+        }
 
     form{
         display: flex;

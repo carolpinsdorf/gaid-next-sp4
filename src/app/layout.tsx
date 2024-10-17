@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <head>
-        <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="@/../public/assets/favicon.ico" type="image/x-icon" />
         <title>GAID</title>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${montserrat.className}`}>
