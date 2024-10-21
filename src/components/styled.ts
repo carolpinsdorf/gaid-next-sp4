@@ -35,6 +35,7 @@ export const HeaderContainer = styled.header`
             height: 5vh;
             width: auto;
             animation: ${fadeIn} 1s ease-in;
+            background-color: transparent;
 
         };
         img:hover, h1:hover{
@@ -44,6 +45,7 @@ export const HeaderContainer = styled.header`
     }
     .div-logoGaid{
         padding: 10px 5px;
+        background-color: transparent;
     }
   
 `;
