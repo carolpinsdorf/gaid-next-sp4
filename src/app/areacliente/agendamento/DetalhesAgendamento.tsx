@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormStyled, SectAgDetails } from './styledAgend';
+import {SectAgDetails } from './styledAgend';
 import { Agendamento } from '@/types';
 import Image from 'next/image';
 import imgDetalhes from '@/../public/assets/iconCalendario.png';
@@ -44,7 +44,7 @@ export default function DetalhesAgendamento({ agendamento, onEdit, onDelete }: P
             <p>Serviço: {agendamento.statusAgendamento}</p>
 
             <div className='boxBotoes'>
-                <button>Editar</button>
+                <button>Remarcar</button>
                 <button onClick={() => setModalOpen(true)}>Deletar</button>
             </div>
 

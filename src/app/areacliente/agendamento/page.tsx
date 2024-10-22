@@ -4,7 +4,8 @@ import FormularioAgendamento from "./FormularioAgendamento";
 import DetalhesAgendamento from "./DetalhesAgendamento";
 import { Agendamento, Carro, Oficina } from "@/types"; 
 import axios from "axios";
-import { Container } from "../styledAreaCliente";
+import { Container } from "./styledAgend";
+import BotaoVoltar from "../botaoVoltar";
 
 export default function Agendamento() {
     const [agendamento, setAgendamento] = useState<Agendamento | null>(null);
@@ -123,19 +124,22 @@ export default function Agendamento() {
     }, []);
 
     return (
-        <Container>
-            <FormularioAgendamento
-                carros={carros}
-                oficinas={oficinas}
-                datasHorariosDisponiveis={datasHorariosDisponiveis}
-                aoCriarAgendamento={handleSubmit}
-            />
-            <DetalhesAgendamento
-                agendamento={agendamento}
-                onEdit={handleEdit}
-                onDelete={handleDelete}
-            />
-        </Container>
+        <main>
+            <Container>
+                <FormularioAgendamento
+                    carros={carros}
+                    oficinas={oficinas}
+                    datasHorariosDisponiveis={datasHorariosDisponiveis}
+                    aoCriarAgendamento={handleSubmit}
+                />
+                <DetalhesAgendamento
+                    agendamento={agendamento}
+                    onEdit={handleEdit}
+                    onDelete={handleDelete}
+                />
+            </Container>
+            <BotaoVoltar/>
+        </main>
     );
 }
 

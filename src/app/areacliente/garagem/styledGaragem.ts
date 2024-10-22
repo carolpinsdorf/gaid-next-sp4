@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components"
+import {styled, keyframes} from "styled-components";
 
 const fadeIn = keyframes`
     from {
@@ -20,16 +20,17 @@ const slideInFromLeft = keyframes`
     }
 `;
 
-export const MainAgendamento = styled.main`
+export const MainGaragem = styled.main`
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 `;
 
 export const Container = styled.div`
     justify-content: space-around;
     padding: 20px;
-    background-color: black;
-    background-image: url('/assets/bgPeople.png');
     flex-grow: 1;
     display: flex;
     flex-direction: row;
@@ -67,9 +68,9 @@ export const Container = styled.div`
     }
     
     @media (max-width: 1024px) { /* Tablets */
-        .box1 {
-            flex-direction: column;
-        }
+        
+        flex-direction: column;
+
     }
 
     @media (max-width: 768px) { /* Smartphones */
@@ -101,6 +102,7 @@ export const FormStyled = styled.form`
     width: 45%;
     border: 5px solid #57aed1;
     animation: ${fadeIn} 2s ease-in-out;
+    height: auto;
 
     .div-icon-agendamento{
         //background-color: #ccc;
@@ -144,8 +146,9 @@ export const FormStyled = styled.form`
         display: flex;
         flex-direction: column;
         width: 90%;
-        margin: auto;
-        select{
+        margin: 4% auto;
+        height: auto;
+        input{
             border: none;
             border-radius: 6px;
             margin: 5px;
@@ -156,7 +159,7 @@ export const FormStyled = styled.form`
             padding: 8px;
             transition: 0.3s ease;
         }
-        select:hover{
+        input:hover{
             scale: 1.05;
             background-color: #233842;
             border: solid 3px #57aed1;
@@ -179,6 +182,7 @@ export const FormStyled = styled.form`
     @media (max-width: 768px) { /* Smartphones */
         padding: 30px;
         width: 90%;
+        height: auto;
     
         h2 {
             font-size: 22px;
@@ -190,7 +194,7 @@ export const FormStyled = styled.form`
     }
 `
 
-export const SectAgDetails = styled.section`
+export const ListaCarro = styled.section`
     padding: 20px;
     background-color: #161f24;
     padding: 50px;
@@ -254,7 +258,7 @@ export const SectAgDetails = styled.section`
 
     @media (max-width: 1024px) { /* Tablets */
         padding: 40px;
-        width: 90%;
+        //width: 90%;
         
         h2 {
             font-size: 30px;
@@ -263,6 +267,7 @@ export const SectAgDetails = styled.section`
 
     @media (max-width: 768px) { /* Smartphones */
         padding: 20px;
+        width: 90%;
 
         h2 {
             font-size: 25px;
@@ -279,4 +284,3 @@ export const SectAgDetails = styled.section`
         }
     }
 `
-

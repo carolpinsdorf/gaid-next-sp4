@@ -16,7 +16,10 @@ export const MainCadastro = styled.main`
     width: 100vw;
     height: 100vh;
     flex-grow: 1;
-
+    background-image: url('/assets/imgSignIn.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 20%;
     h1{
         width: fit-content;
         margin: auto;

@@ -230,7 +230,9 @@ export const EmpresaContainer = styled.section`
     width: 100vw;
     display: flex;
     flex-direction: column;
-    margin-top: 10%;    
+    margin-top: 10%;  
+    background-image: url('/assets/bgPeople.png') ;
+    background-size: cover;
 
     .div-carrossel{
         padding: 10px;
@@ -238,11 +240,13 @@ export const EmpresaContainer = styled.section`
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: transparent;
     }
     .div-texto{
         margin-top: 20px;
         display: flex;
         justify-content: center;
+        background-color: transparent;
 
         h1{
             width: fit-content;
@@ -255,6 +259,7 @@ export const EmpresaContainer = styled.section`
             padding: 10px;
             border: solid 3px rgba(74, 144, 240, 1);
             border-radius: 5px;
+            background-color: transparent;
         }
     }
     .div-desc{
@@ -266,6 +271,7 @@ export const EmpresaContainer = styled.section`
         width: 35%;
         margin-left: 20px;
         padding: 30px;
+        background-color: transparent;
         
 
         .frase, .nome{
@@ -273,6 +279,7 @@ export const EmpresaContainer = styled.section`
             font-size: 2vw;
             font-weight: 100;
             color: #9e9e9e;
+            background-color: transparent;
         }
         .frase{
             font-style: italic;

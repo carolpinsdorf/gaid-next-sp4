@@ -20,6 +20,7 @@ export const StyledImage = styled(Image)`
     width: 30%;
     height: auto;
     transition: transform 0.5s ease-in-out;
+    background-color: transparent;
     
     &:hover {
         transform: scale(1.1);  /* Aumenta a imagem ao passar o mouse */
@@ -34,6 +35,7 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
     cursor: pointer;
     transition: transform 0.5s ease-in-out;
     height:auto;
+    background-color: transparent;
 
     &:hover {
         z-index: 1; /* Garante que a imagem aumentada fique na frente */
