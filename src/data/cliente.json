@@ -1,0 +1,23 @@
+[
+  {
+    "cpfCliente": "12345678901",
+    "nomeCliente": "Carolina Pinsdorf",
+    "dataNascimento": "1990-01-01",
+    "acesso": {
+      "emailAcesso": "carolpinsdorf@gmail.com",
+      "username": "carolpinsdorf",
+      "senha": "Abcd1234"
+    }
+  },
+  {
+    "id": 1729606092375,
+    "cpfCliente": "09876543210",
+    "nomeCliente": "Marcello Pinsdorf",
+    "dataNascimento": "1967-05-29",
+    "acesso": {
+      "emailAcesso": "mpinsdorf@gmail.com",
+      "username": "mpinsdorf",
+      "senha": "1234Abcd"
+    }
+  }
+]

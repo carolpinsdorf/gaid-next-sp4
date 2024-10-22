@@ -3,12 +3,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Acesso, ApiResponse } from '@/types';
 import Link from 'next/link';
-import {MainLogin} from './styledLogin'
-import imgLogin from '@/../public/assets/hero2.png'
+import { MainLogin } from './styledLogin';
+import imgLogin from '@/../public/assets/hero2.png';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
-    // Usando o tipo Acesso para tipar os campos de login
+
+    const navigate = useRouter()
+
     const [acesso, setAcesso] = useState<Acesso>({
         emailAcesso: '', // Não vai ser usado no login
         username: '',
@@ -24,24 +27,28 @@ export default function Login() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
+    
         try {
-        const response = await axios.get<ApiResponse>(`URL_DA_API/login`, {
-            params: {
-                username: acesso.username,
-                senha: acesso.senha,
-            },
-        });
-
-        if (response.data.success) {
-            setMensagem('Login realizado com sucesso!');
-        } else {
-            setMensagem(`Erro: ${response.data.message}`);
-        }
+            // Faz uma requisição para obter os dados de acesso
+            const response = await axios.get<Acesso[]>(`http://localhost:3000/api/base-acesso`);
+            const acessos = response.data; // Os dados que vêm do JSON
+    
+            // Verifica se existe um acesso que corresponde ao username e senha
+            const usuarioValido = acessos.find((item) => 
+                item.username === acesso.username && item.senha === acesso.senha // Comparação correta
+            );
+    
+            if (usuarioValido) {
+                setMensagem('Login realizado com sucesso!');
+                navigate.push('/areacliente');
+            } else {
+                setMensagem('Login não existe. Por favor, cadastre-se.');
+            }
         } catch (error) {
-        setMensagem('Erro ao conectar com a API.');
+            setMensagem('Erro ao conectar com a API.');
         }
     };
+    
 
     return (
         <MainLogin>
@@ -73,8 +80,9 @@ export default function Login() {
                 </div>
             </div>
             <div className='div-img'>
-                <Image src={imgLogin} alt="Imagem de um mulher do lado de seu carro numa garagem"></Image>
+                <Image src={imgLogin} priority alt="Imagem de uma mulher do lado de seu carro numa garagem"></Image>
             </div>
         </MainLogin>
     );
 }
+

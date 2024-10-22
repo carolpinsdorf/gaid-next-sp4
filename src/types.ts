@@ -11,10 +11,11 @@ export type Cliente = {
     cpfCliente: string; // CPF representado como string para lidar melhor com formatos
     nomeCliente: string;
     dataNascimento: string; // A data pode ser manipulada como string no formato ISO (yyyy-mm-dd)
-    acesso: Acesso;
+    acesso: Acesso
 }
   
 export type ApiResponse = {
+    id?: number;
     success: boolean;
     message: string;
 }

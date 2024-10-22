@@ -47,7 +47,7 @@ export default function Garagem() {
 
     const handleDelete = async (id: number) => {
         try {
-            await axios.delete(`/api/carros/${id}`); // Ajuste a URL da API
+            await axios.delete(`/api/carros/${id}`); // Ajustar a URL da API
             setCarros(prev => prev.filter(carro => carro.id !== id));
         } catch (error) {
             console.error('Erro ao excluir carro:', error);
