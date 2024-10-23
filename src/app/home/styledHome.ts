@@ -5,13 +5,14 @@ import styled from "styled-components";
 const fadeIn = keyframes`
   from {
     opacity: 0;
-    transform: translateY(-20px); /* Faz o elemento subir um pouco */
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 `;
+
 const slideInFromLeft = keyframes`
   from {
     transform: translateX(-100%);
@@ -34,7 +35,15 @@ const slideInFromRight = keyframes`
   }
 `;
 
+const applyFadeIn = (component) => styled(component)`
+  opacity: 0;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 
+  &.visible {
+    opacity: 1;
+    animation: ${fadeIn} 3s ease-out;
+  }
+`;
 
 //                                                      Estilizando o container do Home
 export const HomeContainer = styled.main`
@@ -44,7 +53,6 @@ export const HomeContainer = styled.main`
 `;
 
 //                                                      Estilizando o container do CarDiag
-
 export const CarDiagContainer = styled.section`
     display: flex;
     justify-content: space-between;
@@ -52,14 +60,19 @@ export const CarDiagContainer = styled.section`
     flex-wrap: wrap;
     width: 100vw;
     height: 100vh;
+    opacity: 0;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 
+    &.visible {
+        opacity: 1;
+        animation: ${fadeIn} 3s ease-out;
+    }
 
     .div-img{
         width: 48%;
         height: auto;
         align-items: center;
-        animation: ${slideInFromRight} 1s ease-out 0.5s forwards;
-
+        
         img{
             width: 100%;
             height: auto;
@@ -72,7 +85,7 @@ export const CarDiagContainer = styled.section`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        animation: ${slideInFromLeft} 1s ease-out;
+        animation: ${slideInFromLeft} 1.5s ease-out;
 
         p{
             text-align: center;
@@ -113,7 +126,7 @@ export const CarDiagContainer = styled.section`
 `;
 
 //                                                      Estilizando o container do Galdi
-export const GaldiContainer = styled.section`
+export const GaldiContainer = applyFadeIn(styled.section`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -122,6 +135,13 @@ export const GaldiContainer = styled.section`
     height: 100vh;
     margin-top: 10%;
     
+    opacity: 0;
+    transition: opacity 2s ease-out, transform 2s ease-out;
+
+    &.visible {
+        opacity: 1;
+        animation: ${slideInFromLeft} 1s ease-out;
+    }
 
     .div-video{
         height: auto;
@@ -181,17 +201,24 @@ export const GaldiContainer = styled.section`
         }
 
     }
-`;
+`);
 
 //                                                      Estilizando o container do CDScanner
-
-export const CDScannerContainer = styled.section`
+export const CDScannerContainer = applyFadeIn(styled.section`
     height: 100vh;
     display: flex;
     flex-direction: column;
     height: 100vh;
     margin-top: 10%;
     
+    opacity: 0;
+    transition: opacity 2s ease-out, transform 2s ease-out;
+
+    &.visible {
+        opacity: 1;
+        animation: ${fadeIn} 1s ease-out;
+    }
+
     .div-img{
         width: 100vw;
         height: 50%;
@@ -222,10 +249,10 @@ export const CDScannerContainer = styled.section`
         height: fit-content;
         margin-top: 10%;
     }
-`;
+`);
 
 //                                                      Estilizando o container do Empresa
-export const EmpresaContainer = styled.section`
+export const EmpresaContainer = applyFadeIn(styled.section`
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -299,10 +326,10 @@ export const EmpresaContainer = styled.section`
             padding: 5px;
         }
     }
-`;
+`);
 
 //                                                      Estilizando o container do Suporte
-export const SuporteContainer = styled.section`
+export const SuporteContainer = applyFadeIn(styled.section`
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -359,4 +386,4 @@ export const SuporteContainer = styled.section`
         margin-bottom: 400px;
     }
    
-`;
+`);

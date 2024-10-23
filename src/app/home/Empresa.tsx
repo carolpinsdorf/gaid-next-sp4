@@ -9,6 +9,7 @@ import Image from 'next/image';
 import img1 from '@/../public/assets/person1.png'; 
 import img2 from '@/../public/assets/person2.png'; 
 import img3 from '@/../public/assets/person3.png'; 
+import { useInView } from '@/hooks/useInView';
 
 const profiles = [
     { img: img1, github: 'https://github.com/RafaellSouzaPinto', nome: 'Rafael Souza', frase: 'Apaixonado por tecnologia e focado em desenvolver soluções com impacto positivo.' },
@@ -43,8 +44,10 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
 `;
 
 export default function Empresa() {
+    const [ref, isInView] = useInView({ threshold: 0.1 });
+
     return (
-        <EmpresaContainer>
+        <EmpresaContainer ref={ref} className={isInView ? 'visible' : ''}>
             <div className='div-texto'>
                 <h1> Nossa empresa</h1>
             </div>

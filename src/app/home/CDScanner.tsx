@@ -1,11 +1,13 @@
 import imgCDScanner from '@/../public/assets/hero3.png'
 import Image from 'next/image'
 import {CDScannerContainer} from "./styledHome"
+import { useInView } from '@/hooks/useInView';
 
 export default function CDScanner(){
+    const [ref, isInView] = useInView({ threshold: 0.1 });
 
     return(
-        <CDScannerContainer>
+        <CDScannerContainer ref={ref} className={isInView ? 'visible' : ''}>
             <div className="div-texto">
                 <p>
                         O <span style={{ color: "#3caaea", fontWeight: "500" }}>CarDiag Scanner</span> é como um médico para o seu carro. <br />

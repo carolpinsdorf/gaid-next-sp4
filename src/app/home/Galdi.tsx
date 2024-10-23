@@ -1,13 +1,14 @@
 import iconGaldi from "@/../public/assets/iconGaldi.png"
 import {GaldiContainer} from './styledHome'
 import Image from "next/image"
+import { useInView } from '@/hooks/useInView';
 
 
 export default function Galdi(){
-
+    const [ref, isInView] = useInView({ threshold: 0.1 });
 
     return(
-        <GaldiContainer>
+        <GaldiContainer ref={ref} className={isInView ? 'visible' : ''}>
             <div className='div-video'>
                 <video autoPlay loop muted playsInline>
                     <source src="/videos/chatGaldi.mp4" type="video/mp4" />
@@ -27,5 +28,4 @@ export default function Galdi(){
 
         </GaldiContainer>
     )
-
 }

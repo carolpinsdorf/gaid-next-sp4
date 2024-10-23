@@ -8,26 +8,16 @@ import Empresa from "./home/Empresa";
 import Suporte from "./home/Suporte";
 import VoltarAoTopo from "@/components/VoltarAoTopo";
 
-
-
 export default function Home() {
   return (
     <HomeContainer>
       <Menu/>
-
-      <div id="cardiag" className="section"> <CarDiag/> </div>
-
-      <div id="galdi" className="section"> <Galdi/> </div>
-
-      <div id="cdscanner" className="section"> <CDScanner/> </div>
-
-      <div id="empresa" className="section"> <Empresa/> </div>
-
-      <div id="suporte" className="section"> <Suporte/> </div>
-
+      <div id="cardiag"><CarDiag /></div>
+      <div id="galdi"><Galdi /></div>
+      <div id="cdscanner"><CDScanner /></div>
+      <div id="empresa"><Empresa /></div>
+      <div id="suporte"><Suporte /></div>
       <VoltarAoTopo/>
-
     </HomeContainer>
-
   );
 }

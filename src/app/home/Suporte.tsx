@@ -1,14 +1,15 @@
-
 import Image from "next/image";
 import iconCall from "../../../public/assets/iconCall.png"
 import iconMail from "@/../public/assets/iconEmail.png"
 import iconeShop from "@/../public/assets/iconShop.png"
 import {SuporteContainer} from './styledHome'
+import { useInView } from '@/hooks/useInView';
 
 export default function Suporte(){
+    const [ref, isInView] = useInView({ threshold: 0.1 });
    
     return (
-        <SuporteContainer>
+        <SuporteContainer ref={ref} className={isInView ? 'visible' : ''}>
             <h1>Suporte ao cliente</h1>
             <div className="div-box">
             <div className="div-telefone">
