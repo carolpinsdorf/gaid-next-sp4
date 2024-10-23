@@ -31,5 +31,16 @@
       "username": "RafaelPinto",
       "senha": "rs12042017"
     }
+  },
+  {
+    "id": 4,
+    "cpfCliente": "12345678",
+    "nomeCliente": "sdfgs",
+    "dataNascimento": "4322-03-12",
+    "acesso": {
+      "emailAcesso": "gabi@gmail.com",
+      "username": "gabipins",
+      "senha": "1234"
+    }
   }
 ]

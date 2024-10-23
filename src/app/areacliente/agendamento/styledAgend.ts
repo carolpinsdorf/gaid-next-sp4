@@ -166,7 +166,7 @@ export const FormStyled = styled.form`
     
     @media (max-width: 1024px) { /* Tablets */
         padding: 50px;
-    
+        width: 90%;
         h2 {
             font-size: 28px;
         }

@@ -16,23 +16,25 @@ export default function Agendamento() {
     const [agendamentoSelecionado, setAgendamentoSelecionado] = useState<Agendamento | null>(null); // Agendamento selecionado para edição ou deleção
     const [modalOpen, setModalOpen] = useState(false)
 
+    const fetchAgendamentos = async () => {
+        try {
+            const clienteLogado = localStorage.getItem('clienteLogado');
+            if (!clienteLogado) {
+                console.error('Nenhum cliente logado encontrado.');
+                return;
+            }
+    
+            const { id } = JSON.parse(clienteLogado);
+            const response = await axios.get<Agendamento[]>(`http://localhost:3000/api/base-agendamento?clienteId=${id}`);
+            setAgendamentos(response.data); // Use setAgendamentos para definir o estado
+        } catch (error) {
+            console.error('Erro ao buscar agendamentos:', error);
+        }
+    };        
 
     useEffect(() => {
-        const fetchAgendamentos = async () => {
-            try {
-                const clienteLogado = localStorage.getItem('clienteLogado');
-                if (!clienteLogado) {
-                    console.error('Nenhum cliente logado encontrado.');
-                    return;
-                }
-        
-                const { id } = JSON.parse(clienteLogado);
-                const response = await axios.get<Agendamento[]>(`http://localhost:3000/api/base-agendamento?clienteId=${id}`);
-                setAgendamentos(response.data); // Use setAgendamentos para definir o estado
-            } catch (error) {
-                console.error('Erro ao buscar agendamentos:', error);
-            }
-        };        
+
+        fetchAgendamentos();
 
         const fetchCarros = async () => {
             try {
@@ -69,7 +71,7 @@ export default function Agendamento() {
             setDatasHorariosDisponiveis(datasFormatadas);
         };
 
-        fetchAgendamentos(); // Corrigido para chamar a função correta
+        fetchAgendamentos(); 
         fetchCarros();
         fetchOficinas();
         fetchDatasHorarios();
@@ -78,7 +80,9 @@ export default function Agendamento() {
    const handleSubmit = async (novoAgendamento: Agendamento) => {
         try {
             const response = await axios.post('http://localhost:3000/api/base-agendamento', novoAgendamento);
-            setAgendamentos([...agendamentos, response.data]); // Adiciona o novo agendamento
+            console.log('Novo agendamento:', response.data);
+            await fetchAgendamentos();
+            setAgendamentos([...agendamentos, response.data.agendamento]); // Adiciona o novo agendamento
         } catch (error) {
             console.error('Erro ao criar agendamento:', error);
         }
@@ -132,6 +136,7 @@ export default function Agendamento() {
                 />
             </Container>
             <BotaoVoltar/>
+
             {/* Modal de Exclusão */}
             {modalOpen && (
                 <Modal
@@ -145,7 +150,6 @@ export default function Agendamento() {
                     }}
                 >
                     <p>Tem certeza que deseja excluir este agendamento?</p>
-                    <button onClick={() => setModalOpen(false)}>Cancelar</button>
                 </Modal>
             )}
         </main>

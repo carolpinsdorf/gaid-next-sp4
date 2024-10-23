@@ -34,5 +34,41 @@
         "senha": "Abcd1234"
       }
     }
+  },
+  {
+    "id": 1729714699496,
+    "placa": "DEF1234",
+    "marca": "VW",
+    "modelo": "GOL",
+    "anoFabricacao": 2014,
+    "cliente": {
+      "id": 2,
+      "cpfCliente": "09876543210",
+      "nomeCliente": "Marcello Pinsdorf",
+      "dataNascimento": "1967-05-29",
+      "acesso": {
+        "emailAcesso": "mpinsdorf@gmail.com",
+        "username": "mpinsdorf",
+        "senha": "1234"
+      }
+    }
+  },
+  {
+    "id": 1729716961175,
+    "placa": "acbd4567",
+    "marca": "fbsbdfn",
+    "modelo": "sdnfjkn",
+    "anoFabricacao": 3394,
+    "cliente": {
+      "id": 4,
+      "cpfCliente": "12345678",
+      "nomeCliente": "sdfgs",
+      "dataNascimento": "4322-03-12",
+      "acesso": {
+        "emailAcesso": "gabi@gmail.com",
+        "username": "gabipins",
+        "senha": "1234"
+      }
+    }
   }
 ]
