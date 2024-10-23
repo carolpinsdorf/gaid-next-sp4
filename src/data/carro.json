@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "placa": "ABCD1234",
+    "marca": "FIAT",
+    "modelo": "Mobi",
+    "anoFabricacao": 2014,
+    "cliente": {
+      "id": 1,
+      "cpfCliente": "12345678901",
+      "nomeCliente": "Carolina Pinsdorf",
+      "dataNascimento": "1990-01-01",
+      "acesso": {
+        "emailAcesso": "carolpinsdorf@gmail.com",
+        "username": "carolpinsdorf",
+        "senha": "Abcd1234"
+      }
+    }
+  },
+  {
+    "id": 1729647505293,
+    "placa": "defg1234",
+    "marca": "honda",
+    "modelo": "hrv",
+    "anoFabricacao": 1223,
+    "cliente": {
+      "id": 1,
+      "cpfCliente": "12345678901",
+      "nomeCliente": "Carolina Pinsdorf",
+      "dataNascimento": "1990-01-01",
+      "acesso": {
+        "emailAcesso": "carolpinsdorf@gmail.com",
+        "username": "carolpinsdorf",
+        "senha": "Abcd1234"
+      }
+    }
+  },
+  {
+    "id": 1729647691780,
+    "placa": "dsfgfg",
+    "marca": "fgfgf",
+    "modelo": "sdgdg",
+    "anoFabricacao": 23452,
+    "cliente": {
+      "id": 1,
+      "cpfCliente": "12345678901",
+      "nomeCliente": "Carolina Pinsdorf",
+      "dataNascimento": "1990-01-01",
+      "acesso": {
+        "emailAcesso": "carolpinsdorf@gmail.com",
+        "username": "carolpinsdorf",
+        "senha": "Abcd1234"
+      }
+    }
+  },
+  {
+    "id": 1729651139838,
+    "placa": "ffgerer",
+    "marca": "frvrg",
+    "modelo": "rferg",
+    "anoFabricacao": 3212,
+    "cliente": {
+      "id": 1,
+      "cpfCliente": "12345678901",
+      "nomeCliente": "Carolina Pinsdorf",
+      "dataNascimento": "1990-01-01",
+      "acesso": {
+        "emailAcesso": "carolpinsdorf@gmail.com",
+        "username": "carolpinsdorf",
+        "senha": "Abcd1234"
+      }
+    }
+  }
+]

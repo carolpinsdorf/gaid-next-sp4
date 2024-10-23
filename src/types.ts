@@ -15,7 +15,6 @@ export type Cliente = {
 }
   
 export type ApiResponse = {
-    id?: number;
     success: boolean;
     message: string;
 }

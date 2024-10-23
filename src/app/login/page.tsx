@@ -40,6 +40,8 @@ export default function Login() {
     
             if (usuarioValido) {
                 setMensagem('Login realizado com sucesso!');
+                // Salva as informações do usuário no localStorage
+                localStorage.setItem('clienteLogado', JSON.stringify(usuarioValido));
                 navigate.push('/areacliente');
             } else {
                 setMensagem('Login não existe. Por favor, cadastre-se.');

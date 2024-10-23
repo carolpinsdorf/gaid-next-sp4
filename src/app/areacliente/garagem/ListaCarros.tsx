@@ -8,6 +8,7 @@ type Props = {
 };
 
 export default function ListaCarros({ carros, onEdit, onDelete }: Props) {
+    console.log('Carros na lista:', carros); // Verifique se os carros estão sendo passados corretamente
     return (
         <ListaCarro>
             <h2>Meus Carros</h2>
@@ -21,3 +22,4 @@ export default function ListaCarros({ carros, onEdit, onDelete }: Props) {
         </ListaCarro>
     );
 }
+
