@@ -43,7 +43,7 @@ export default function ListaCarros({ carros, onEdit, onDelete }: Props) {
                         <p>Modelo: {carro.modelo}</p>
                         <p>Ano de Fabricação: {carro.anoFabricacao}</p>
                         <div className="box-botoes">
-                            <button onClick={(handleEdit) => onEdit(carro)}>Editar</button>
+                            <button onClick={() => onEdit(carro)}>Editar</button> {/* Correção feita aqui */}
                             <button onClick={() => confirmarExclusao(carro.id)}>Excluir</button>
                         </div>
                     </div>

@@ -15,15 +15,12 @@ export default function Garagem() {
     const [clienteLogado, setClienteLogado] = useState<Cliente | null>(null);
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const cliente = localStorage.getItem('clienteLogado');
-            if (cliente) {
-                const clienteData: Cliente = JSON.parse(cliente);
-                setClienteLogado(clienteData);
-            } else {
-                console.error('Cliente não está logado, redirecionando para login.');
-                navigate.push('/login');
-            }
+        const cliente = localStorage.getItem('clienteLogado');
+        if (cliente) {
+            const clienteData: Cliente = JSON.parse(cliente);
+            setClienteLogado(clienteData);
+        } else {
+            navigate.push('/login');
         }
     }, [navigate]);
 
@@ -36,7 +33,6 @@ export default function Garagem() {
     const fetchCarros = async (idCliente: number) => {
         try {
             const response = await axios.get<Carro[]>(`http://localhost:3000/api/base-carro?clienteId=${idCliente}`);
-            console.log('Carros retornados:', response.data);
             setCarros(response.data);
         } catch (error) {
             console.error('Erro ao buscar carros:', error);
@@ -44,32 +40,19 @@ export default function Garagem() {
     };
 
     const handleSubmit = async (novoCarro: Carro) => {
-        if (clienteLogado) {
-            try {
-                const response = await axios.post(`http://localhost:3000/api/base-carro?clienteId=${clienteLogado.id}`, {
-                    ...novoCarro
-                });
+        try {
+            if (carroEditado) {
+                const response = await axios.put(`http://localhost:3000/api/base-carro/${carroEditado.id}`, novoCarro);
+                setCarros(prev => prev.map(carro => (carro.id === carroEditado.id ? response.data.carro : carro)));
+            } else {
+                const response = await axios.post(`http://localhost:3000/api/base-carro?clienteId=${clienteLogado?.id}`, novoCarro);
                 setCarros(prev => [...prev, response.data.carro]);
-            } catch (error) {
-                console.error('Erro ao cadastrar carro:', error);
             }
+            setCarroEditado(null); // Limpa o carro editado após salvar
+        } catch (error) {
+            console.error('Erro ao salvar carro:', error);
         }
     };
-
-    const handleEdit = async (carroEditado: Carro) => {
-        if (carroEditado.id) { // Verifique se carroEditado.id existe
-            try {
-                const response = await axios.put(`http://localhost:3000/api/base-carro/${carroEditado.id}`, carroEditado);
-                setCarros(prev => prev.map(carro => (carro.id === carroEditado.id ? response.data.carro : carro))); // Use response.data.carro
-                setCarroEditado(null);
-            } catch (error) {
-                console.error('Erro ao editar carro:', error);
-            }
-        }
-    };
-    
-
-    
 
     const handleDelete = async (id: number) => {
         try {
@@ -79,9 +62,6 @@ export default function Garagem() {
             console.error('Erro ao excluir carro:', error);
         }
     };
-    
-    // O mesmo vale para a edição, onde você vai garantir que a chamada PUT é feita corretamente.
-    
 
     return (
         <MainGaragem>
@@ -93,6 +73,7 @@ export default function Garagem() {
         </MainGaragem>
     );
 }
+
 
 
 

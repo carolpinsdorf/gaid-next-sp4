@@ -23,55 +23,29 @@ export default function FormularioCarro({ aoCadastrarCarro, carroEditado, setCar
         }
     }, [carroEditado]);
 
-    const handleEdit = async (id: number, carro: Carro) => {
-        try {
-            // Aqui você pode fazer a chamada para a API para editar o carro
-            const response = await fetch(`http://localhost:3000/api/base-carro/${id}`, { // Substitua pela URL correta da API
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(carro),
-            });
-
-            if (!response.ok) {
-                throw new Error('Erro ao editar carro');
-            }
-
-            const updatedCar = await response.json();
-            console.log('Carro editado com sucesso:', updatedCar);
-            resetForm();
-        } catch (error) {
-            console.error('Erro ao editar carro:', error);
-        }
-    };
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (placa && marca && modelo && anoFabricacao) {
             const novoCarro: Carro = {
+                id: carroEditado?.id || 0, // Se for edição, mantém o ID, caso contrário é um novo carro
                 placa,
                 marca,
                 modelo,
                 anoFabricacao: Number(anoFabricacao),
-                cliente: {
-                    id: 0, // Ajustar conforme necessário
-                    cpfCliente: '', // Exemplo
-                    nomeCliente: '', // Exemplo
-                    dataNascimento: '', // Exemplo
+                cliente: carroEditado?.cliente || {
+                    id: 0, // Ajuste conforme necessário
+                    cpfCliente: '', 
+                    nomeCliente: '', 
+                    dataNascimento: '', 
                     acesso: { 
-                        id: 0, 
                         emailAcesso: '', 
                         username: '', 
                         senha: '' }
                 }
             };
 
-            if (carroEditado) {
-                handleEdit(carroEditado.id, novoCarro); // Chama o método de edição
-            } else {
-                aoCadastrarCarro(novoCarro); // Chama o método de cadastro
-            }
+            aoCadastrarCarro(novoCarro); // Chama a função de cadastro ou edição
+            resetForm();
         }
     };
 
@@ -80,7 +54,7 @@ export default function FormularioCarro({ aoCadastrarCarro, carroEditado, setCar
         setMarca('');
         setModelo('');
         setAnoFabricacao('');
-        setCarroEditado(null); // Reseta a edição
+        setCarroEditado(null); // Reseta o formulário
     };
 
     return (
