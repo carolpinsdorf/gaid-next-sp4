@@ -19,7 +19,8 @@ export async function POST(req: Request) {
         }
 
         // Gera um ID único com base na data
-        const novoClienteId = Number(Date.now());
+        const novoClienteId = clientes.length > 0 ? clientes[clientes.length - 1].id + 1 : 1;
+
 
         // Cria o objeto cliente com ID gerado, utilizando o tipo Cliente
         const novoCliente: Cliente = {

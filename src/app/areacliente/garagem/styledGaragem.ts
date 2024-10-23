@@ -33,7 +33,7 @@ export const Container = styled.div`
     padding: 20px;
     flex-grow: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100vw;
     justify-content: space-around;
 
@@ -68,7 +68,7 @@ export const Container = styled.div`
     }
     
     @media (max-width: 1024px) { /* Tablets */
-        
+        width: 100%;
         flex-direction: column;
 
     }
@@ -99,10 +99,10 @@ export const FormStyled = styled.form`
     //background-color: #161f24;
     padding: 20px;
     border-radius: 20px;
-    width: 45%;
+    width: 70%;
     border: 5px solid #57aed1;
     animation: ${fadeIn} 2s ease-in-out;
-    height: auto;
+    height: fit-content;
 
     .div-icon-agendamento{
         //background-color: #ccc;
@@ -169,6 +169,7 @@ export const FormStyled = styled.form`
     
     @media (max-width: 1024px) { /* Tablets */
         padding: 50px;
+        width: 80%;
     
         h2 {
             font-size: 28px;
@@ -195,35 +196,27 @@ export const FormStyled = styled.form`
 `
 
 export const ListaCarro = styled.section`
-    padding: 20px;
+    padding: 15px;
     background-color: #161f24;
-    padding: 50px;
     border-radius: 20px;
-    margin: 20px auto;
+    margin: 10px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     animation: ${slideInFromLeft} 1s ease forwards;
-    width: 45%;
+    width: 70%;
+    height: fit-content;
 
-    .div-icon-calendario{
+
+    .div-icon-carro{
         display: flex;
         justify-content: center;
         background-color: transparent;
         img{
-            width: 10%;
+            width: 20%;
             height: auto;
             background-color: transparent;
         }
-    }
-    p{
-        color: gray;
-        font-size: 25px;
-        padding: 8px;
-        text-align: center;
-        background-color: transparent;
-        font-weight: 200;
-
     }
     h2{
         color:#57aed1;
@@ -232,33 +225,50 @@ export const ListaCarro = styled.section`
         background-color: transparent;
         text-align: center;
     }
-    button{
-        width: fit-content;
-        padding: 10px 15px;
-        border-radius: 10px;
-        margin: 10px;
-        background-color: #57aed1;
-        color: #161f24;
-        font-size: 20px;
-        border: none;
-        cursor: pointer;
-        transition: 0.3s ease;
-        background: linear-gradient(135deg, #57aed1, #233842);
-    }
-    button:hover{
-        background: linear-gradient(345deg,#57aed1, #233842);
-        scale: 1.1;
-    }
-    .boxBotoes{
-        display: flex;
-        justify-content: space-around;
-        margin-top: 5%;
+    .div-desc{
         background-color: transparent;
+        margin: auto;
+        border: #57aed1 solid 5px;
+        border-radius: 10px;
+        margin: 5%;
+        p{
+            color: gray;
+            font-size: 25px;
+            padding: 8px;
+            text-align: center;
+            background-color: transparent;
+            font-weight: 200;
+    
+        }
+        button{
+            width: fit-content;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 10px;
+            background-color: #57aed1;
+            color: #161f24;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+            background: linear-gradient(135deg, #57aed1, #233842);
+        }
+        button:hover{
+            background: linear-gradient(345deg,#57aed1, #233842);
+            scale: 1.1;
+        }
+        .box-botoes{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5%;
+            background-color: transparent;
+        }
     }
 
     @media (max-width: 1024px) { /* Tablets */
         padding: 40px;
-        //width: 90%;
+        width: 80%;
         
         h2 {
             font-size: 30px;

@@ -8,7 +8,6 @@ import { MainCadastro } from './styledCad';
 import Link from 'next/link';
 
 export default function Cadastro() {
-
     const router = useRouter();
 
     const [cliente, setCliente] = useState<Omit<Cliente, 'id'>>({
@@ -51,6 +50,7 @@ export default function Cadastro() {
         
                 if (acessoResponse.data.success) {
                     alert('Cadastrado realizado com sucesso!');
+                    // Limpa o formulário
                     setCliente({
                         cpfCliente: '',
                         nomeCliente: '',
@@ -60,7 +60,7 @@ export default function Cadastro() {
                             username: '',
                             senha: '',
                         },
-                    }); // Limpa o formulário
+                    });
                     router.push('/login'); // Redireciona para a página de login
                 } else {
                     setMensagem(`Erro no cadastro de acesso: ${acessoResponse.data.message}`);
@@ -72,9 +72,6 @@ export default function Cadastro() {
             setMensagem('Erro ao conectar com a API.');
         }
     };
-    
-    
-    
 
     return (
         <MainCadastro>
@@ -144,5 +141,6 @@ export default function Cadastro() {
         </MainCadastro>
     );
 }
+
 
 

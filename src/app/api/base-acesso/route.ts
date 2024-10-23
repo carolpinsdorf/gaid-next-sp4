@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     }
 
     // Gera um novo ID unico
-    const newId = Number(Date.now())
+    const newId = acessos.length > 0 ? acessos[acessos.length - 1].id + 1 : 1;
 
     // Cria o novo acesso
     const novoAcesso : Acesso = {

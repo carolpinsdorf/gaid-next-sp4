@@ -1,10 +1,10 @@
 import React from 'react';
-import {styled,keyframes} from 'styled-components';
+import { styled, keyframes } from 'styled-components';
 
 type ModalProps = {
     open: boolean;
     onClose: () => void;
-    onConfirm: () => void; // Para confirmar a ação
+    onConfirm: () => void;
     children: React.ReactNode;
 };
 
@@ -23,39 +23,34 @@ const Overlay = styled.div<{ open: boolean }>`
     inset: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Certifique-se de que o modal está acima de outros elementos */
 `;
 
 const ModalContainer = styled.div<{ open: boolean }>`
-    animation: ${fadeIn} 0.5s ease-in-out;
-    //background-color: white;
+    animation: ${fadeIn} 0.3s ease-in-out;
+    background-color: black;
     display: flex;
     flex-direction: column;
-    //flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 14px 25px #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 50%;
     border-radius: 8px;
     padding: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transform: ${({ open }) => (open ? 'scale(1)' : 'scale(1.1)')};
     opacity: ${({ open }) => (open ? 1 : 0)};
-    transition: transform 0.3s, opacity 0.3s;
-    p{
-        margin-top: 3rem;
-        font-weight: 200;
+    transition: opacity 0.3s ease-in-out;
+    position: relative;
+
+    p {
+        margin-top: 1rem;
+        font-weight: 400;
         color: #9e9e9e;
     }
-    @media (max-width: 1024px){
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
 
-    }        
-    
+    @media (max-width: 1024px) {
+        width: 80%;
+    }
 `;
 
 const CloseButton = styled.button`
@@ -64,23 +59,40 @@ const CloseButton = styled.button`
     right: 8px;
     background: transparent;
     border: none;
+    font-size: 1.5rem;
     cursor: pointer;
-    color: #aaa;
+    color: #999;
     &:hover {
-        color: #000;
+        color: #333;
     }
 `;
 
 const ConfirmButton = styled.button`
-    margin-top: 16px auto;
+    margin-top: 16px;
     background-color: #007bff;
-    color: #007bff;
+    color: white;
     border: none;
     border-radius: 4px;
     padding: 8px 16px;
     cursor: pointer;
     &:hover {
-        background-color: #0056b3;
+        background-color: #1f4873;
+        scale: 1.1;
+    }
+`;
+
+const CancelButton = styled.button`
+    margin-top: 16px;
+    margin-left: 8px;
+    background-color: #ad0f04;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    &:hover {
+        background-color: #a31414;
+        scale: 1.1;
     }
 `;
 
@@ -90,8 +102,12 @@ export default function Modal({ open, onClose, onConfirm, children }: ModalProps
             <ModalContainer open={open} onClick={(e) => e.stopPropagation()}>
                 <CloseButton onClick={onClose}>X</CloseButton>
                 {children}
-                <ConfirmButton onClick={onConfirm}>Confirmar</ConfirmButton>
+                <div>
+                    <ConfirmButton onClick={onConfirm}>Confirmar</ConfirmButton>
+                    <CancelButton onClick={onClose}>Cancelar</CancelButton>
+                </div>
             </ModalContainer>
         </Overlay>
     );
 }
+

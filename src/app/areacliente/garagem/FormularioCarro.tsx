@@ -3,7 +3,7 @@ import { FormStyled } from './styledGaragem';
 import { Carro } from '@/types';
 
 type Props = {
-    aoCadastrarCarro: (carro: Carro) => void;
+    aoCadastrarCarro: (carro: Carro) => Promise<void>; // Presumindo que seja uma chamada assíncrona
     carroEditado: Carro | null;
     setCarroEditado: (carro: Carro | null) => void;
 }
@@ -23,6 +23,29 @@ export default function FormularioCarro({ aoCadastrarCarro, carroEditado, setCar
         }
     }, [carroEditado]);
 
+    const handleEdit = async (id: number, carro: Carro) => {
+        try {
+            // Aqui você pode fazer a chamada para a API para editar o carro
+            const response = await fetch(`http://localhost:3000/api/base-carro/${id}`, { // Substitua pela URL correta da API
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(carro),
+            });
+
+            if (!response.ok) {
+                throw new Error('Erro ao editar carro');
+            }
+
+            const updatedCar = await response.json();
+            console.log('Carro editado com sucesso:', updatedCar);
+            resetForm();
+        } catch (error) {
+            console.error('Erro ao editar carro:', error);
+        }
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (placa && marca && modelo && anoFabricacao) {
@@ -32,11 +55,15 @@ export default function FormularioCarro({ aoCadastrarCarro, carroEditado, setCar
                 modelo,
                 anoFabricacao: Number(anoFabricacao),
                 cliente: {
-                    id: 1, // Ajustar conforme necessário
-                    cpfCliente: '123.456.789-00', // Exemplo
-                    nomeCliente: 'João da Silva', // Exemplo
-                    dataNascimento: '1990-01-01', // Exemplo
-                    acesso: { id: 1, emailAcesso: 'joao@teste.com', username: 'joao123', senha: 'senha123' }
+                    id: 0, // Ajustar conforme necessário
+                    cpfCliente: '', // Exemplo
+                    nomeCliente: '', // Exemplo
+                    dataNascimento: '', // Exemplo
+                    acesso: { 
+                        id: 0, 
+                        emailAcesso: '', 
+                        username: '', 
+                        senha: '' }
                 }
             };
 
@@ -45,8 +72,6 @@ export default function FormularioCarro({ aoCadastrarCarro, carroEditado, setCar
             } else {
                 aoCadastrarCarro(novoCarro); // Chama o método de cadastro
             }
-
-            resetForm();
         }
     };
 
