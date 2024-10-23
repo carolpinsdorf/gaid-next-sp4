@@ -6,9 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import styled from 'styled-components';
 import Image from 'next/image';
-import img1 from '../assets/person1.png'; 
-import img2 from '../assets/person2.png'; 
-import img3 from '../assets/person3.png'; 
+import img1 from '@/../public/assets/person1.png'; 
+import img2 from '@/../public/assets/person2.png'; 
+import img3 from '@/../public/assets/person3.png'; 
+import { useInView } from '@/hooks/useInView';
 
 const profiles = [
     { img: img1, github: 'https://github.com/RafaellSouzaPinto', nome: 'Rafael Souza', frase: 'Apaixonado por tecnologia e focado em desenvolver soluções com impacto positivo.' },
@@ -20,6 +21,7 @@ export const StyledImage = styled(Image)`
     width: 30%;
     height: auto;
     transition: transform 0.5s ease-in-out;
+    background-color: transparent;
     
     &:hover {
         transform: scale(1.1);  /* Aumenta a imagem ao passar o mouse */
@@ -33,6 +35,8 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.5s ease-in-out;
+    height:auto;
+    background-color: transparent;
 
     &:hover {
         z-index: 1; /* Garante que a imagem aumentada fique na frente */
@@ -40,8 +44,10 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
 `;
 
 export default function Empresa() {
+    const [ref, isInView] = useInView({ threshold: 0.1 });
+
     return (
-        <EmpresaContainer>
+        <EmpresaContainer ref={ref} className={isInView ? 'visible' : ''}>
             <div className='div-texto'>
                 <h1> Nossa empresa</h1>
             </div>
@@ -51,7 +57,7 @@ export default function Empresa() {
                     spaceBetween={0}  // Espaço entre os slides
                     slidesPerView={1.05}  // Mostra 2.5 slides por vez
                     navigation
-                    pagination={{ clickable: true }}
+                    
                     loop={true}
                     centeredSlides={false}  // Centraliza o slide ativo
                 >

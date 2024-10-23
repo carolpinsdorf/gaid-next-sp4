@@ -1,13 +1,14 @@
-import iconGaldi from "../assets/iconGaldi.png"
+import iconGaldi from "@/../public/assets/iconGaldi.png"
 import {GaldiContainer} from './styledHome'
 import Image from "next/image"
+import { useInView } from '@/hooks/useInView';
 
 
 export default function Galdi(){
-
+    const [ref, isInView] = useInView({ threshold: 0.1 });
 
     return(
-        <GaldiContainer>
+        <GaldiContainer ref={ref} className={isInView ? 'visible' : ''}>
             <div className='div-video'>
                 <video autoPlay loop muted playsInline>
                     <source src="/videos/chatGaldi.mp4" type="video/mp4" />
@@ -20,12 +21,11 @@ export default function Galdi(){
 
             <div className="div-p">
                 <p>
-                    Em uma breve conversa o Galdí, você pode dianosticar seu problema, orçar o reparo e agendá-lo.
+                    Em uma breve conversa o <span style={{ color: "#3caaea", fontWeight: "500" }}>Galdí</span>, você pode <span style={{ color: "#3caaea" }}>dianosticar</span> seu problema, <span style={{ color: "#3caaea" }}>orçar</span> o reparo e <span style={{ color: "#3caaea" }}>agendá-lo</span>.
                     <br/> Tudo em questão de segundos
                 </p>
             </div>
 
         </GaldiContainer>
     )
-
 }

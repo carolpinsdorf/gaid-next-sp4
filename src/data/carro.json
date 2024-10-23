@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1729685724691,
+    "placa": "HGF5432",
+    "marca": "Flamengo",
+    "modelo": "Gabigol",
+    "anoFabricacao": 2019,
+    "cliente": {
+      "id": 3,
+      "cpfCliente": "47405452841",
+      "nomeCliente": "Rafael",
+      "dataNascimento": "2006-05-04",
+      "acesso": {
+        "emailAcesso": "rafaelsouza.rs14@gmail.com",
+        "username": "RafaelPinto",
+        "senha": "rs12042017"
+      }
+    }
+  },
+  {
+    "id": 1729692779924,
+    "placa": "ABCD1234",
+    "marca": "Honda",
+    "modelo": "HR-v",
+    "anoFabricacao": 2019,
+    "cliente": {
+      "id": 1,
+      "cpfCliente": "12345678901",
+      "nomeCliente": "Carolina Pinsdorf",
+      "dataNascimento": "1990-01-01",
+      "acesso": {
+        "emailAcesso": "carolpinsdorf@gmail.com",
+        "username": "carolpinsdorf",
+        "senha": "Abcd1234"
+      }
+    }
+  },
+  {
+    "id": 1729714699496,
+    "placa": "DEF1234",
+    "marca": "VW",
+    "modelo": "GOL",
+    "anoFabricacao": 2014,
+    "cliente": {
+      "id": 2,
+      "cpfCliente": "09876543210",
+      "nomeCliente": "Marcello Pinsdorf",
+      "dataNascimento": "1967-05-29",
+      "acesso": {
+        "emailAcesso": "mpinsdorf@gmail.com",
+        "username": "mpinsdorf",
+        "senha": "1234"
+      }
+    }
+  },
+  {
+    "id": 1729716961175,
+    "placa": "acbd4567",
+    "marca": "fbsbdfn",
+    "modelo": "sdnfjkn",
+    "anoFabricacao": 3394,
+    "cliente": {
+      "id": 4,
+      "cpfCliente": "12345678",
+      "nomeCliente": "sdfgs",
+      "dataNascimento": "4322-03-12",
+      "acesso": {
+        "emailAcesso": "gabi@gmail.com",
+        "username": "gabipins",
+        "senha": "1234"
+      }
+    }
+  }
+]

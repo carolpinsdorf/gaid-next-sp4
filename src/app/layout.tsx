@@ -4,6 +4,8 @@ import localFont from 'next/font/local';
 import "./global.css";
 import Cabecalho from "@/components/Cabecalho";
 import Rodape from "@/components/Rodape";
+import StyledComponentsRegistry from '@/../lib/registry';
+
 
 // Fontes locais
 const geistSans = localFont({
@@ -38,15 +40,15 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <head>
-        <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="@/../public/assets/favicon.ico" type="image/x-icon" />
         <title>GAID</title>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${montserrat.className}`}>
-        <Cabecalho/>
-        {children}
-        
+        <StyledComponentsRegistry>
+          <Cabecalho/>
+          {children}
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
 }
-

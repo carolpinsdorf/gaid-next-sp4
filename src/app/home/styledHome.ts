@@ -5,13 +5,14 @@ import styled from "styled-components";
 const fadeIn = keyframes`
   from {
     opacity: 0;
-    transform: translateY(-20px); /* Faz o elemento subir um pouco */
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 `;
+
 const slideInFromLeft = keyframes`
   from {
     transform: translateX(-100%);
@@ -34,7 +35,15 @@ const slideInFromRight = keyframes`
   }
 `;
 
+const applyFadeIn = (component) => styled(component)`
+  opacity: 0;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 
+  &.visible {
+    opacity: 1;
+    animation: ${fadeIn} 3s ease-out;
+  }
+`;
 
 //                                                      Estilizando o container do Home
 export const HomeContainer = styled.main`
@@ -44,19 +53,26 @@ export const HomeContainer = styled.main`
 `;
 
 //                                                      Estilizando o container do CarDiag
-
 export const CarDiagContainer = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
     height: 100vh;
+    opacity: 0;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+
+    &.visible {
+        opacity: 1;
+        animation: ${fadeIn} 3s ease-out;
+    }
 
     .div-img{
         width: 48%;
         height: auto;
         align-items: center;
-        animation: ${slideInFromRight} 1s ease-out 0.5s forwards;
-
+        
         img{
             width: 100%;
             height: auto;
@@ -69,11 +85,11 @@ export const CarDiagContainer = styled.section`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        animation: ${slideInFromLeft} 1s ease-out;
+        animation: ${slideInFromLeft} 1.5s ease-out;
 
         p{
             text-align: center;
-            font-size: 50px;
+            font-size: 3.5vw;
             font-weight: 100;
             color: #9e9e9e;
         }
@@ -84,19 +100,51 @@ export const CarDiagContainer = styled.section`
             height: auto;
         }
     }
-    
+
+    @media (max-width: 782px) { /* Tablets e Mobile */
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        .div-img{
+            img{
+                display: none;
+            }
+        }
+        .div-texto{
+            margin-top: 10%;
+            justify-content: center;
+            align-items: center;
+            img{
+                margin: auto;
+            }
+            .div-porto{
+                display: flex;
+            }
+        }
+
+    }
 `;
 
 //                                                      Estilizando o container do Galdi
-export const GaldiContainer = styled.section`
+export const GaldiContainer = applyFadeIn(styled.section`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    height: 100vh;
+    margin-top: 10%;
+    
+    opacity: 0;
+    transition: opacity 2s ease-out, transform 2s ease-out;
+
+    &.visible {
+        opacity: 1;
+        animation: ${slideInFromLeft} 1s ease-out;
+    }
 
     .div-video{
-        height: 100vh;
+        height: auto;
         width: 30%;
         //background-color: violet;
         display: flex;
@@ -128,19 +176,48 @@ export const GaldiContainer = styled.section`
 
         p{
             text-align: right;
-            font-size: 40px;
+            font-size: 2.5vw;
             font-weight: 100;
             color: #9e9e9e;
         }
     }
-`;
+
+    @media (max-width: 782px) { /* Tablets e Mobile */
+        display: flex;
+        flex-wrap: wrap;
+        height: fit-content;
+        margin-top: 10%;
+
+        .div-video{
+            width: fit-content;
+            height: auto;
+            video{
+                width: 70%;
+            }
+        }
+        .div-img, .div-p{
+            margin-top: 10%;
+            width: 50%;
+        }
+
+    }
+`);
 
 //                                                      Estilizando o container do CDScanner
-
-export const CDScannerContainer = styled.section`
+export const CDScannerContainer = applyFadeIn(styled.section`
     height: 100vh;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    margin-top: 10%;
+    
+    opacity: 0;
+    transition: opacity 2s ease-out, transform 2s ease-out;
+
+    &.visible {
+        opacity: 1;
+        animation: ${fadeIn} 1s ease-out;
+    }
 
     .div-img{
         width: 100vw;
@@ -154,37 +231,62 @@ export const CDScannerContainer = styled.section`
     .div-texto{
         width: 100vw;
         height: 50%;
-        margin-top: 10%;
+        //background-color: red;
+        display: flex;
+        align-items: center;
         p{
+            padding: 0 10% 0;
             text-align: center;
-            font-size: 30px;
+            font-size: 2.5vw;
             font-weight: 100;
             color: #9e9e9e;
         }
     }
-`;
+
+    @media (max-width: 782px) { /* Tablets e Mobile */
+        display: flex;
+        flex-wrap: wrap;
+        height: fit-content;
+        margin-top: 10%;
+    }
+`);
 
 //                                                      Estilizando o container do Empresa
-export const EmpresaContainer = styled.section`
+export const EmpresaContainer = applyFadeIn(styled.section`
     height: 100vh;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;  
+    background-image: url('/assets/bgPeople.png') ;
+    background-size: cover;
 
     .div-carrossel{
         padding: 10px;
-        height: 80vh;
+        height: fit-content;
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: transparent;
     }
     .div-texto{
         margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        background-color: transparent;
+
         h1{
-            margin-top: 50px;
-            font-size: 40px;
+            width: fit-content;
+            height: auto;
+            margin: 5%;
+            font-size: 2.5vw;
             font-weight: 100;
             color: #9e9e9e;
             text-align: center;
-            padding: 30px;
+            padding: 10px;
+            border: solid 3px rgba(74, 144, 240, 1);
+            border-radius: 5px;
+            background-color: transparent;
         }
     }
     .div-desc{
@@ -196,13 +298,15 @@ export const EmpresaContainer = styled.section`
         width: 35%;
         margin-left: 20px;
         padding: 30px;
+        background-color: transparent;
         
 
         .frase, .nome{
             padding: 10px;
-            font-size:35px;
+            font-size: 2vw;
             font-weight: 100;
             color: #9e9e9e;
+            background-color: transparent;
         }
         .frase{
             font-style: italic;
@@ -214,6 +318,72 @@ export const EmpresaContainer = styled.section`
         }
 
     }
-`;
+
+    @media (max-width: 782px) { /* Tablets e Mobile */
+        height: fit-content;
+        margin-top: 10%;
+        .div-desc{
+            padding: 5px;
+        }
+    }
+`);
 
 //                                                      Estilizando o container do Suporte
+export const SuporteContainer = applyFadeIn(styled.section`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+
+
+    h1{
+        padding:10px;
+        margin-bottom: 2%;
+        font-size: 2.5vw;
+        font-weight: 100;
+        color: #9e9e9e;
+        border: solid 3px rgba(74, 144, 240, 1);
+        border-radius: 5px;
+    }
+
+    .div-box{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        //background-color: #9e9e9e;
+        justify-content: space-evenly;
+        align-items: center;
+
+        img{
+            width: 35%;
+            height: auto;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            p{
+                text-align: center;
+                font-size: 1.5vw;
+                font-weight: 100;
+                color: #9e9e9e;
+                
+            }
+        }
+    }
+    @media (max-width: 782px) { /* Tablets e Mobile */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 400px;
+        margin-top: 10%;
+        margin-bottom: 400px;
+    }
+   
+`);
