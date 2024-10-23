@@ -33,18 +33,18 @@ export default function Login() {
             const response = await axios.get<Acesso[]>(`http://localhost:3000/api/base-acesso`);
             const acessos = response.data; // Os dados que vêm do JSON
     
-            // Verifica se existe um acesso que corresponde ao username e senha
-            const usuarioValido = acessos.find((item) => 
-                item.username === acesso.username && item.senha === acesso.senha // Comparação correta
-            );
+            const usuarioExistente = acessos.find(item => item.username === acesso.username);
     
-            if (usuarioValido) {
-                setMensagem('Login realizado com sucesso!');
-                // Salva as informações do usuário no localStorage
-                localStorage.setItem('clienteLogado', JSON.stringify(usuarioValido));
-                navigate.push('/areacliente');
+            if (usuarioExistente) {
+                if (usuarioExistente.senha === acesso.senha) {
+                    setMensagem('Login realizado com sucesso!');
+                    localStorage.setItem('clienteLogado', JSON.stringify(usuarioExistente));
+                    navigate.push('/areacliente');
+                } else {
+                    setMensagem('Senha incorreta. Por favor, tente novamente.');
+                }
             } else {
-                setMensagem('Login não existe. Por favor, cadastre-se.');
+                setMensagem('Usuário não encontrado. Por favor, cadastre-se.');
             }
         } catch (error) {
             setMensagem('Erro ao conectar com a API.');

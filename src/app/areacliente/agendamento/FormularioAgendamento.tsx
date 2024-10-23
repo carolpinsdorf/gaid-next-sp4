@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FormStyled } from './styledAgend'; 
 import { Agendamento, Carro, Oficina } from '@/types'; 
 import Image from 'next/image';
@@ -9,9 +9,11 @@ type Props = {
     oficinas: Oficina[];
     datasHorariosDisponiveis: string[];
     aoCriarAgendamento: (agendamento: Agendamento) => void;
+    agendamentoEditado: Agendamento | null;
+    setAgendamentoEditado: (agendamento: Agendamento | null) => void;
 }
 
-export default function FormularioAgendamento({ carros, oficinas, datasHorariosDisponiveis, aoCriarAgendamento }: Props) {
+export default function FormularioAgendamento({ carros, oficinas, datasHorariosDisponiveis, aoCriarAgendamento, agendamentoEditado, setAgendamentoEditado }: Props) {
     const [carroSelecionado, setCarroSelecionado] = useState<number | null>(null);
     const [oficinaSelecionada, setOficinaSelecionada] = useState<number | null>(null);
     const [dataHoraSelecionada, setDataHoraSelecionada] = useState<string>('');
@@ -19,17 +21,35 @@ export default function FormularioAgendamento({ carros, oficinas, datasHorariosD
 
     const servicos = ['Troca de Óleo', 'Limpeza de Bicos Injetores', 'Alinhamento e Balanceamento']; // Exemplo de serviços
 
+    useEffect(() => {
+        if (agendamentoEditado) {
+            setCarroSelecionado(agendamentoEditado.carro.id);
+            setOficinaSelecionada(agendamentoEditado.oficina.id);
+            setDataHoraSelecionada(agendamentoEditado.dthoraAgendamento);
+        }
+    }, [agendamentoEditado]);
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (carroSelecionado && oficinaSelecionada && dataHoraSelecionada && servicoSelecionado) {
             const agendamento: Agendamento = {
+                id: agendamentoEditado?.id || 0,
                 dthoraAgendamento: dataHoraSelecionada,
-                statusAgendamento: 'Confirmado',
+                statusAgendamento: agendamentoEditado?.statusAgendamento || 'Confirmado',
                 oficina: oficinas.find(oficina => oficina.id === oficinaSelecionada)!,
                 carro: carros.find(carro => carro.id === carroSelecionado)!,
             };
-            aoCriarAgendamento(agendamento); // Passa os dados do agendamento para o componente pai
+            aoCriarAgendamento(agendamento);
+            resetForm();
         }
+    };
+
+    const resetForm = () => {
+        setCarroSelecionado(null);
+        setOficinaSelecionada(null);
+        setDataHoraSelecionada('');
+        setServicoSelecionado('');
+        setAgendamentoEditado(null);
     };
 
     return (
@@ -37,7 +57,7 @@ export default function FormularioAgendamento({ carros, oficinas, datasHorariosD
             <div className='div-icon-agendamento'>
                 <Image src={imgAgendamento} alt="ícone de agendamento" />
             </div>
-            <h2>Agendar Serviço</h2>
+            <h2>{agendamentoEditado ? 'Editar Agendamento' : 'Agendar Serviço'}</h2>
 
             <div className='div-campo'>
                 <label htmlFor="carro">Carro:</label>
@@ -83,7 +103,7 @@ export default function FormularioAgendamento({ carros, oficinas, datasHorariosD
                 </select>
             </div>
 
-            <button type="submit">Agendar</button>
+            <button type="submit">{agendamentoEditado ? 'Salvar Alterações' : 'Agendar'}</button>
         </FormStyled>
     );
 }

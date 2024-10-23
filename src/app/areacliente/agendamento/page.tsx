@@ -79,35 +79,43 @@ export default function Agendamento() {
 
    const handleSubmit = async (novoAgendamento: Agendamento) => {
         try {
-            const response = await axios.post('http://localhost:3000/api/base-agendamento', novoAgendamento);
-            console.log('Novo agendamento:', response.data);
-            await fetchAgendamentos();
-            setAgendamentos([...agendamentos, response.data.agendamento]); // Adiciona o novo agendamento
+            if (agendamentoSelecionado) {
+                // Edição
+                const response = await axios.put(`http://localhost:3000/api/base-agendamento/${agendamentoSelecionado.id}`, novoAgendamento);
+                setAgendamentos(prev => prev.map(ag => ag.id === agendamentoSelecionado.id ? response.data.agendamento : ag));
+                setAgendamentoSelecionado(null);
+                alert("Agendamento atualizado com sucesso!");
+            } else {
+                // Criação
+                const response = await axios.post('http://localhost:3000/api/base-agendamento', novoAgendamento);
+                setAgendamentos(prev => [...prev, response.data.agendamento]);
+                alert("Novo agendamento criado com sucesso!");
+            }
         } catch (error) {
-            console.error('Erro ao criar agendamento:', error);
+            console.error('Erro ao salvar agendamento:', error);
+            alert("Erro ao salvar agendamento. Por favor, tente novamente.");
         }
     };
 
-
-    const handleEdit = async (agendamentoEditado: Agendamento) => {
-        if (agendamentoEditado.id) {
-            try {
-                const response = await axios.put(`http://localhost:3000/api/base-agendamento/${agendamentoEditado.id}`, agendamentoEditado);
-                const updatedAgendamentos = agendamentos.map((agendamento) => agendamento.id === agendamentoEditado.id ? response.data : agendamento);
-                setAgendamentos(updatedAgendamentos);
-            } catch (error) {
-                console.error('Erro ao editar agendamento:', error);
-            }
-        }
+    const handleEdit = (agendamento: Agendamento) => {
+        setAgendamentoSelecionado(agendamento);
     };
 
     const handleDelete = async (id: number) => {
         try {
-            await axios.delete(`http://localhost:3000/api/base-agendamento/${id}`);
-            setAgendamentos(agendamentos.filter(agendamento => agendamento.id !== id)); // Remove o agendamento deletado
-            setAgendamentoSelecionado(null);
+            const response = await axios.delete(`http://localhost:3000/api/base-agendamento/${id}`);
+            if (response.data.success) {
+                setAgendamentos(agendamentos.filter(agendamento => agendamento.id !== id));
+                setAgendamentoSelecionado(null);
+                setModalOpen(false);
+                alert("Agendamento deletado com sucesso!"); // Adicionado alerta de sucesso
+            } else {
+                console.error('Erro ao excluir agendamento:', response.data.message);
+                alert("Erro ao excluir agendamento. Por favor, tente novamente."); // Alerta de erro
+            }
         } catch (error) {
             console.error('Erro ao excluir agendamento:', error);
+            alert("Erro ao excluir agendamento. Por favor, tente novamente."); // Alerta de erro
         }
     };
 
@@ -125,6 +133,8 @@ export default function Agendamento() {
                     oficinas={oficinas}
                     datasHorariosDisponiveis={datasHorariosDisponiveis}
                     aoCriarAgendamento={handleSubmit}
+                    agendamentoEditado={agendamentoSelecionado}
+                    setAgendamentoEditado={setAgendamentoSelecionado}
                 />
                 <DetalhesAgendamento
                     agendamentos={agendamentos} // Passa o array de agendamentos
@@ -138,16 +148,11 @@ export default function Agendamento() {
             <BotaoVoltar/>
 
             {/* Modal de Exclusão */}
-            {modalOpen && (
+            {modalOpen && agendamentoSelecionado && (
                 <Modal
                     open={modalOpen}
                     onClose={() => setModalOpen(false)}
-                    onConfirm={() => {
-                        if (agendamentoSelecionado) {
-                            handleDelete(agendamentoSelecionado.id);
-                        }
-                        setModalOpen(false);
-                    }}
+                    onConfirm={() => handleDelete(agendamentoSelecionado.id)}
                 >
                     <p>Tem certeza que deseja excluir este agendamento?</p>
                 </Modal>
