@@ -1,22 +1,49 @@
-"use client";
+"use client"
 import { useEffect, useState } from "react";
 import FormularioAgendamento from "./FormularioAgendamento";
 import DetalhesAgendamento from "./DetalhesAgendamento";
-import { Agendamento, Carro, Oficina } from "@/types"; 
+import { Agendamento, Carro, Oficina } from "@/types";
 import axios from "axios";
 import { Container } from "./styledAgend";
 import BotaoVoltar from "../botaoVoltar";
+import Modal from "@/components/Modal";
 
 export default function Agendamento() {
-    const [agendamento, setAgendamento] = useState<Agendamento | null>(null);
+    const [agendamentos, setAgendamentos] = useState<Agendamento[]>([]); // Array de agendamentos
     const [carros, setCarros] = useState<Carro[]>([]);
     const [oficinas, setOficinas] = useState<Oficina[]>([]);
     const [datasHorariosDisponiveis, setDatasHorariosDisponiveis] = useState<string[]>([]);
+    const [agendamentoSelecionado, setAgendamentoSelecionado] = useState<Agendamento | null>(null); // Agendamento selecionado para edição ou deleção
+    const [modalOpen, setModalOpen] = useState(false)
+
 
     useEffect(() => {
+        const fetchAgendamentos = async () => {
+            try {
+                const clienteLogado = localStorage.getItem('clienteLogado');
+                if (!clienteLogado) {
+                    console.error('Nenhum cliente logado encontrado.');
+                    return;
+                }
+        
+                const { id } = JSON.parse(clienteLogado);
+                const response = await axios.get<Agendamento[]>(`http://localhost:3000/api/base-agendamento?clienteId=${id}`);
+                setAgendamentos(response.data); // Use setAgendamentos para definir o estado
+            } catch (error) {
+                console.error('Erro ao buscar agendamentos:', error);
+            }
+        };        
+
         const fetchCarros = async () => {
             try {
-                const response = await axios.get<Carro[]>('/api/carros'); // Alterar a URL da API
+                const clienteLogado = localStorage.getItem('clienteLogado');
+                if (!clienteLogado) {
+                    console.error('Nenhum cliente logado encontrado.');
+                    return;
+                }
+
+                const { id } = JSON.parse(clienteLogado);
+                const response = await axios.get<Carro[]>(`http://localhost:3000/api/base-carro?clienteId=${id}`);
                 setCarros(response.data);
             } catch (error) {
                 console.error('Erro ao buscar carros:', error);
@@ -25,7 +52,7 @@ export default function Agendamento() {
 
         const fetchOficinas = async () => {
             try {
-                const response = await axios.get<Oficina[]>('/api/oficinas'); // Alterar a URL da API
+                const response = await axios.get<Oficina[]>('http://localhost:3000/api/base-oficinas');
                 setOficinas(response.data);
             } catch (error) {
                 console.error('Erro ao buscar oficinas:', error);
@@ -42,26 +69,28 @@ export default function Agendamento() {
             setDatasHorariosDisponiveis(datasFormatadas);
         };
 
+        fetchAgendamentos(); // Corrigido para chamar a função correta
         fetchCarros();
         fetchOficinas();
         fetchDatasHorarios();
-    }, []); 
+    }, []);
 
-    const handleSubmit = async (novoAgendamento: Agendamento) => {
+   const handleSubmit = async (novoAgendamento: Agendamento) => {
         try {
-            const response = await axios.post('/api/agendamentos', novoAgendamento); // Alterar URL da API
-            setAgendamento(response.data);
+            const response = await axios.post('http://localhost:3000/api/base-agendamento', novoAgendamento);
+            setAgendamentos([...agendamentos, response.data]); // Adiciona o novo agendamento
         } catch (error) {
             console.error('Erro ao criar agendamento:', error);
         }
     };
 
+
     const handleEdit = async (agendamentoEditado: Agendamento) => {
         if (agendamentoEditado.id) {
             try {
-                const response = await axios.put(`/api/agendamentos/${agendamentoEditado.id}`, agendamentoEditado);
-                alert('Agendamento editado com sucesso.');
-                setAgendamento(response.data);
+                const response = await axios.put(`http://localhost:3000/api/base-agendamento/${agendamentoEditado.id}`, agendamentoEditado);
+                const updatedAgendamentos = agendamentos.map((agendamento) => agendamento.id === agendamentoEditado.id ? response.data : agendamento);
+                setAgendamentos(updatedAgendamentos);
             } catch (error) {
                 console.error('Erro ao editar agendamento:', error);
             }
@@ -70,9 +99,9 @@ export default function Agendamento() {
 
     const handleDelete = async (id: number) => {
         try {
-            await axios.delete(`/api/agendamentos/${id}`); // Ajustar a URL 
-            alert('Agendamento excluído com sucesso.');
-            setAgendamento(null); // Reseta o agendamento após a exclusão
+            await axios.delete(`http://localhost:3000/api/base-agendamento/${id}`);
+            setAgendamentos(agendamentos.filter(agendamento => agendamento.id !== id)); // Remove o agendamento deletado
+            setAgendamentoSelecionado(null);
         } catch (error) {
             console.error('Erro ao excluir agendamento:', error);
         }
@@ -81,47 +110,8 @@ export default function Agendamento() {
     const formatarDataHora = (dataHora: string): string => {
         const [data, hora] = dataHora.split('T');
         const [ano, mes, dia] = data.split('-');
-        return `${dia}/${mes}/${ano} ${hora.slice(0, 5)}`; 
+        return `${dia}/${mes}/${ano} ${hora.slice(0, 5)}`;
     };
-
-    const agendamentoFake: Agendamento = {
-        dthoraAgendamento: '2024-10-21T14:30',
-        statusAgendamento: 'Confirmado',
-        oficina: {
-            id: 1,
-            nome: 'Oficina Teste',
-            cnpj: '12.345.678/0001-95',
-            acesso: {
-                id: 1,
-                emailAcesso: 'teste@oficina.com',
-                username: 'oficina_teste',
-                senha: 'senha123',
-            },
-        },
-        carro: {
-            id: 1,
-            placa: 'ABC1D23',
-            marca: 'Fusca',
-            modelo: 'Fusca 1975',
-            anoFabricacao: 1975,
-            cliente: {
-                id: 1,
-                cpfCliente: '123.456.789-00',
-                nomeCliente: 'João da Silva',
-                dataNascimento: '1990-01-01',
-                acesso: {
-                    id: 1,
-                    emailAcesso: 'joao@teste.com',
-                    username: 'joao123',
-                    senha: 'senha123',
-                },
-            },
-        },
-    };
-
-    useEffect(() => {
-        setAgendamento(agendamentoFake);
-    }, []);
 
     return (
         <main>
@@ -133,15 +123,31 @@ export default function Agendamento() {
                     aoCriarAgendamento={handleSubmit}
                 />
                 <DetalhesAgendamento
-                    agendamento={agendamento}
+                    agendamentos={agendamentos} // Passa o array de agendamentos
                     onEdit={handleEdit}
-                    onDelete={handleDelete}
+                    onDelete={(id) => {
+                        setAgendamentoSelecionado(agendamentos.find(a => a.id === id) || null);
+                        setModalOpen(true);
+                    }}
                 />
             </Container>
             <BotaoVoltar/>
+            {/* Modal de Exclusão */}
+            {modalOpen && (
+                <Modal
+                    open={modalOpen}
+                    onClose={() => setModalOpen(false)}
+                    onConfirm={() => {
+                        if (agendamentoSelecionado) {
+                            handleDelete(agendamentoSelecionado.id);
+                        }
+                        setModalOpen(false);
+                    }}
+                >
+                    <p>Tem certeza que deseja excluir este agendamento?</p>
+                    <button onClick={() => setModalOpen(false)}>Cancelar</button>
+                </Modal>
+            )}
         </main>
     );
 }
-
-
-

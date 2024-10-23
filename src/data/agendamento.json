@@ -1,0 +1,35 @@
+[
+    {
+        "id":1,
+        "dtHoraAgendamento": "2024-10-21T14:30",
+        "statusAgendamento": "Confirmado",
+        "oficina":{
+            "id": 1, 
+            "nome": "Centro Automotivo Ibirapuera",
+            "cnpj": "12345678909876",
+            "acesso":{
+                "emailAcesso": "cap.ibirapuera@portoseguro.com",
+                "username": "caps.ibirapuera",
+                "senha": "1234"
+            }
+        },
+        "carro":{
+            "id": 1729692779924,
+            "placa": "ABCD1234",
+            "marca": "Honda",
+            "modelo": "HR-v",
+            "anoFabricacao": 2019,
+            "cliente": {
+              "id": 1,
+              "cpfCliente": "12345678901",
+              "nomeCliente": "Carolina Pinsdorf",
+              "dataNascimento": "1990-01-01",
+              "acesso": {
+                "emailAcesso": "carolpinsdorf@gmail.com",
+                "username": "carolpinsdorf",
+                "senha": "Abcd1234"
+              }
+            }
+        }    
+    }
+]
