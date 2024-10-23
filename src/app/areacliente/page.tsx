@@ -45,8 +45,5 @@ export default function AreaCliente(){
                 </Link>
             </Container>
         </MainAreaCliente>
-
     )
-
-
 }
