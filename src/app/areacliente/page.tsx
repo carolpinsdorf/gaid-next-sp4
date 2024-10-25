@@ -1,30 +1,33 @@
 "use client";
+import { useState } from 'react';
 import {MainAreaCliente, Container, Box, BoxImage, Descricao} from './styledAreaCliente';
 import Image from 'next/image';
 import Link from 'next/link';
 import imgGaldi from '@/../public/assets/iconAreaDoCliente.png'
 import imgAgendamento from '@/../public/assets/iconAreaDoCliente1.png'
 import imgGaragem from '@/../public/assets/iconAreaDoCliente2.png'
-
-
+import WatsonAssistant from '@/components/WatsonAssistant';
 
 export default function AreaCliente(){
-    
+    const [showWatson, setShowWatson] = useState(false);
+
+    const handleGaldiClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setShowWatson(true);
+    };
 
     return(
         <MainAreaCliente>
             <h1>Área do cliente</h1>
             <Container>
-                <Link href="https://iagaldii.streamlit.app/" target="_blank" rel="noopener noreferrer">
-                    <Box>
-                        <BoxImage>
-                            <Image src={imgGaldi} alt="Converse com Galdí" />
-                        </BoxImage>
-                        <Descricao>
-                            <p>Conversar com Galdí</p>
-                        </Descricao>
-                    </Box>
-                </Link>
+                <Box onClick={handleGaldiClick}>
+                    <BoxImage>
+                        <Image src={imgGaldi} alt="Converse com Galdí" />
+                    </BoxImage>
+                    <Descricao>
+                        <p>Conversar com Galdí</p>
+                    </Descricao>
+                </Box>
                 <Link href={'areacliente/agendamento'}>
                     <Box>
                         <BoxImage>
@@ -46,6 +49,7 @@ export default function AreaCliente(){
                     </Box>
                 </Link>
             </Container>
+            {showWatson && <WatsonAssistant />}
         </MainAreaCliente>
     )
 }
