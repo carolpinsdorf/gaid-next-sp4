@@ -18,7 +18,7 @@ export default function Cabecalho() {
       </div>
       
       <div>
-        <Link href="/login">
+        <Link href="/login" target="_blank" rel="noopener noreferrer">
             <Image src={loginIcon} alt="Login"/>
         </Link>
       </div>

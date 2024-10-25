@@ -70,5 +70,23 @@
         "senha": "1234"
       }
     }
+  },
+  {
+    "id": 1729865402926,
+    "placa": "p1nt0",
+    "marca": "Alpha Romeu",
+    "modelo": "XPTO",
+    "anoFabricacao": 1950,
+    "cliente": {
+      "id": 5,
+      "cpfCliente": "5444444444",
+      "nomeCliente": "skull",
+      "dataNascimento": "1932-12-15",
+      "acesso": {
+        "emailAcesso": "marcio@gmail.com",
+        "username": "marcio gatinho",
+        "senha": "gatinho marcio"
+      }
+    }
   }
 ]

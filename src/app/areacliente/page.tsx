@@ -15,14 +15,16 @@ export default function AreaCliente(){
         <MainAreaCliente>
             <h1>Área do cliente</h1>
             <Container>
-                <Box>
-                    <BoxImage>
-                        <Image src={imgGaldi} alt="Converse com Galdí" />
-                    </BoxImage>
-                    <Descricao>
-                        <p>Conversar com Galdí</p>
-                    </Descricao>
-                </Box>
+                <Link href="https://iagaldii.streamlit.app/" target="_blank" rel="noopener noreferrer">
+                    <Box>
+                        <BoxImage>
+                            <Image src={imgGaldi} alt="Converse com Galdí" />
+                        </BoxImage>
+                        <Descricao>
+                            <p>Conversar com Galdí</p>
+                        </Descricao>
+                    </Box>
+                </Link>
                 <Link href={'areacliente/agendamento'}>
                     <Box>
                         <BoxImage>

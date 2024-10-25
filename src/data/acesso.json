@@ -22,5 +22,11 @@
     "emailAcesso": "gabi@gmail.com",
     "username": "gabipins",
     "senha": "1234"
+  },
+  {
+    "id": 5,
+    "emailAcesso": "marcio@gmail.com",
+    "username": "marcio gatinho",
+    "senha": "gatinho marcio"
   }
 ]
