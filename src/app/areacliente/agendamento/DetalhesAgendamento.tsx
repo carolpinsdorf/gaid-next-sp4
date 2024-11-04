@@ -31,7 +31,7 @@ export default function DetalhesAgendamento({ agendamentos, onEdit, onDelete }: 
                         <p>Carro: {agendamento.carro?.placa || "Placa não disponível"}</p>
                         <div className='box-botoes'>
                             <button onClick={() => onEdit(agendamento)}>Remarcar</button>
-                            <button onClick={() => onDelete(agendamento.id)}>Deletar</button>
+                            <button onClick={() => onDelete(agendamento.id!)}>Deletar</button>
                         </div>
                     </div>
                 ))
