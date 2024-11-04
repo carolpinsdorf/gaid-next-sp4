@@ -3,15 +3,11 @@ import bgCardiag from "@/../public/assets/hero1.png";
 import {CarDiagContainer} from "./styledHome";
 import logoPorto from '@/../public/assets/logoMarcaPorto.png'
 import logoOxigenio from "@/../public/assets/logoOxigenio.png"
-import { useInView } from '@/hooks/useInView';
-import { useRef } from 'react';
 
 export default function CarDiag() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref);
 
   return (
-    <CarDiagContainer ref={ref} className={isInView ? 'visible' : ''}>
+    <CarDiagContainer>
       <div className="div-texto">
         <p>
           Otimize seu tempo <br /> com a <span style={{ color: "#3caaea", fontWeight: "500" }}>GAID</span>: a <br /> solução definitiva{" "}

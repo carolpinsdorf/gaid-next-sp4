@@ -35,7 +35,7 @@ const slideInFromRight = keyframes`
   }
 `;
 
-const applyFadeIn = (component) => styled(component)`
+const applyFadeIn = (component: React.ComponentType) => styled(component)`
   opacity: 0;
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 
