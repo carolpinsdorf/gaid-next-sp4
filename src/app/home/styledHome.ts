@@ -35,15 +35,6 @@ const slideInFromRight = keyframes`
   }
 `;
 
-const applyFadeIn = (component: React.ComponentType) => styled(component)`
-  opacity: 0;
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-
-  &.visible {
-    opacity: 1;
-    animation: ${fadeIn} 3s ease-out;
-  }
-`;
 
 //                                                      Estilizando o container do Home
 export const HomeContainer = styled.main`
@@ -60,7 +51,7 @@ export const CarDiagContainer = styled.section`
     flex-wrap: wrap;
     width: 100vw;
     height: 100vh;
-    opacity: 0;
+    //opacity: 0;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 
     &.visible {
@@ -135,7 +126,7 @@ export const GaldiContainer = styled.section`
     height: 100vh;
     margin-top: 10%;
     
-    opacity: 0;
+    //opacity: 0;
     transition: opacity 2s ease-out, transform 2s ease-out;
 
     &.visible {
@@ -204,14 +195,14 @@ export const GaldiContainer = styled.section`
 `
 
 //                                                      Estilizando o container do CDScanner
-export const CDScannerContainer = applyFadeIn(styled.section`
+export const CDScannerContainer = styled.section`
     height: 100vh;
     display: flex;
     flex-direction: column;
     height: 100vh;
     margin-top: 10%;
     
-    opacity: 0;
+    //opacity: 0;
     transition: opacity 2s ease-out, transform 2s ease-out;
 
     &.visible {
@@ -249,10 +240,10 @@ export const CDScannerContainer = applyFadeIn(styled.section`
         height: fit-content;
         margin-top: 10%;
     }
-`);
+`
 
 //                                                      Estilizando o container do Empresa
-export const EmpresaContainer = applyFadeIn(styled.section`
+export const EmpresaContainer = styled.section`
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -326,10 +317,10 @@ export const EmpresaContainer = applyFadeIn(styled.section`
             padding: 5px;
         }
     }
-`);
+`
 
 //                                                      Estilizando o container do Suporte
-export const SuporteContainer = applyFadeIn(styled.section`
+export const SuporteContainer = styled.section`
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -386,4 +377,4 @@ export const SuporteContainer = applyFadeIn(styled.section`
         margin-bottom: 400px;
     }
    
-`);
+`
