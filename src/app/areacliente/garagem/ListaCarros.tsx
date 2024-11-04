@@ -32,7 +32,13 @@ export default function ListaCarros({ carros, onEdit, onDelete }: Props) {
     return (
         <ListaCarro>
             <div className="div-icon-carro">
-                <Image src={iconCarro} alt="icone de carro" />
+                <Image 
+                    src={iconCarro} 
+                    alt="icone de carro"
+                    width={100}
+                    height={100}
+                    priority
+                />
             </div>
             <h2>Meus Carros</h2>
             {carros.length > 0 ? (

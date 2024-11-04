@@ -1,13 +1,13 @@
 
 export type Acesso = {
-    id?: number;
+    id: number;
     emailAcesso: string;
     username: string;
     senha: string;
 }
   
 export type Cliente = {
-    id?: number;
+    id: number;
     cpfCliente: string; // CPF representado como string para lidar melhor com formatos
     nomeCliente: string;
     dataNascimento: string; // A data pode ser manipulada como string no formato ISO (yyyy-mm-dd)
@@ -20,7 +20,7 @@ export type ApiResponse = {
 }
 
 export type Carro = {
-    id?: number;
+    id: number;
     placa: string,
     marca: string,
     modelo: string,
@@ -29,17 +29,23 @@ export type Carro = {
 }
 
 export type Oficina = {
-    id?: number;
+    id: number;
     nome: string,
     cnpj: string,
     acesso: Acesso
 }
 
 export type Agendamento = {
-    id?: number;
-    dthoraAgendamento: string; // Formato ISO (ex: '2024-10-21T14:30')
-    statusAgendamento: string; // Ex: 'Ativo'
-    oficina: Oficina,
-    carro: Carro
+    id: number;
+    dthoraAgendamento: string;
+    statusAgendamento: string;
+    oficina?: {
+        id: number;
+        nome: string;
+    };
+    carro?: {
+        id: number;
+        placa: string;
+    };
 }
   

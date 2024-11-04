@@ -15,6 +15,7 @@ export default function Cadastro() {
         nomeCliente: '',
         dataNascimento: '',
         acesso: {
+            id: '',
             emailAcesso: '',
             username: '',
             senha: '',
@@ -42,11 +43,11 @@ export default function Cadastro() {
     
         try {
             // Envia os dados do cliente para base-cliente
-            const clienteResponse = await axios.post<ApiResponse>('http://localhost:3000/api/base-cliente', cliente);
+            const clienteResponse = await axios.post<ApiResponse>('/api/base-cliente', cliente);
             
             if (clienteResponse.data.success) {
                 // Se o cadastro do cliente for bem-sucedido, envia os dados de acesso para base-acesso
-                const acessoResponse = await axios.post<ApiResponse>('http://localhost:3000/api/base-acesso', cliente.acesso);
+                const acessoResponse = await axios.post<ApiResponse>('/api/base-acesso', cliente.acesso);
         
                 if (acessoResponse.data.success) {
                     alert('Cadastrado realizado com sucesso!');
@@ -56,6 +57,7 @@ export default function Cadastro() {
                         nomeCliente: '',
                         dataNascimento: '',
                         acesso: {
+                            id: 0,
                             emailAcesso: '',
                             username: '',
                             senha: '',

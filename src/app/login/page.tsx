@@ -13,6 +13,7 @@ export default function Login() {
     const navigate = useRouter()
 
     const [acesso, setAcesso] = useState<Acesso>({
+        id: 0,
         emailAcesso: '', // Não vai ser usado no login
         username: '',
         senha: '',
@@ -29,8 +30,8 @@ export default function Login() {
         e.preventDefault();
     
         try {
-            // Faz uma requisição para obter os dados de acesso
-            const response = await axios.get<Acesso[]>(`http://localhost:3000/api/base-acesso`);
+            // Use uma variável de ambiente para a URL da API
+            const response = await axios.get<Acesso[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/base-acesso`);
             const acessos = response.data; // Os dados que vêm do JSON
     
             const usuarioExistente = acessos.find(item => item.username === acesso.username);

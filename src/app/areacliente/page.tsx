@@ -22,7 +22,12 @@ export default function AreaCliente(){
             <Container>
                 <Box onClick={handleGaldiClick}>
                     <BoxImage>
-                        <Image src={imgGaldi} alt="Converse com Galdí" />
+                        <Image 
+                            src={imgGaldi} 
+                            alt="Converse com Galdí" 
+                            width={100}
+                            height={100}
+                        />
                     </BoxImage>
                     <Descricao>
                         <p>Conversar com Galdí</p>
@@ -31,7 +36,12 @@ export default function AreaCliente(){
                 <Link href={'areacliente/agendamento'}>
                     <Box>
                         <BoxImage>
-                            <Image src={imgAgendamento} alt="Agendamentos" />
+                            <Image 
+                                src={imgAgendamento} 
+                                alt="Agendamentos" 
+                                width={100}
+                                height={100}
+                            />
                         </BoxImage>
                         <Descricao>
                             <p>Meus agendamentos</p>
@@ -41,7 +51,12 @@ export default function AreaCliente(){
                 <Link href={'areacliente/garagem'}>
                     <Box>
                         <BoxImage>
-                            <Image src={imgGaragem} alt="Visualizar E-Garagem" />
+                            <Image 
+                                src={imgGaragem} 
+                                alt="Visualizar E-Garagem" 
+                                width={100}
+                                height={100}
+                            />
                         </BoxImage>
                         <Descricao>
                             <p>Minha e-Garagem</p>

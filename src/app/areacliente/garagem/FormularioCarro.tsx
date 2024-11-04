@@ -1,9 +1,11 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { FormStyled } from './styledGaragem'; 
-import { Carro } from '@/types';
+import type { Carro } from '@/types';
 
 type Props = {
-    aoCadastrarCarro: (carro: Carro) => Promise<void>; // Presumindo que seja uma chamada assíncrona
+    aoCadastrarCarro: (carro: Carro) => Promise<void>;
     carroEditado: Carro | null;
     setCarroEditado: (carro: Carro | null) => void;
 }
@@ -27,24 +29,26 @@ export default function FormularioCarro({ aoCadastrarCarro, carroEditado, setCar
         e.preventDefault();
         if (placa && marca && modelo && anoFabricacao) {
             const novoCarro: Carro = {
-                id: carroEditado?.id || 0, // Se for edição, mantém o ID, caso contrário é um novo carro
+                id: carroEditado?.id || 0,
                 placa,
                 marca,
                 modelo,
                 anoFabricacao: Number(anoFabricacao),
                 cliente: carroEditado?.cliente || {
-                    id: 0, // Ajuste conforme necessário
-                    cpfCliente: '', 
-                    nomeCliente: '', 
-                    dataNascimento: '', 
-                    acesso: { 
-                        emailAcesso: '', 
-                        username: '', 
-                        senha: '' }
+                    id: 0,
+                    cpfCliente: '',
+                    nomeCliente: '',
+                    dataNascimento: '',
+                    acesso: {
+                        id: 0,
+                        emailAcesso: '',
+                        username: '',
+                        senha: ''
+                    }
                 }
             };
 
-            aoCadastrarCarro(novoCarro); // Chama a função de cadastro ou edição
+            aoCadastrarCarro(novoCarro);
             resetForm();
         }
     };
@@ -54,7 +58,7 @@ export default function FormularioCarro({ aoCadastrarCarro, carroEditado, setCar
         setMarca('');
         setModelo('');
         setAnoFabricacao('');
-        setCarroEditado(null); // Reseta o formulário
+        setCarroEditado(null);
     };
 
     return (
