@@ -126,7 +126,7 @@ export const CarDiagContainer = styled.section`
 `;
 
 //                                                      Estilizando o container do Galdi
-export const GaldiContainer = applyFadeIn(styled.section`
+export const GaldiContainer = styled.section`
     display: flex;
     flex-direction: row;
     align-items: center;
