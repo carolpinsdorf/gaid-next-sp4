@@ -4,9 +4,11 @@ import {CarDiagContainer} from "./styledHome";
 import logoPorto from '@/../public/assets/logoMarcaPorto.png'
 import logoOxigenio from "@/../public/assets/logoOxigenio.png"
 import { useInView } from '@/hooks/useInView';
+import { useRef } from 'react';
 
 export default function CarDiag() {
-  const [ref, isInView] = useInView({ threshold: 0.1 });
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref);
 
   return (
     <CarDiagContainer ref={ref} className={isInView ? 'visible' : ''}>
