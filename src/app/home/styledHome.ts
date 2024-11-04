@@ -201,7 +201,7 @@ export const GaldiContainer = styled.section`
         }
 
     }
-`);
+`
 
 //                                                      Estilizando o container do CDScanner
 export const CDScannerContainer = applyFadeIn(styled.section`
