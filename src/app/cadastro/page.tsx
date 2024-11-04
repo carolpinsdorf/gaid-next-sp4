@@ -15,7 +15,7 @@ export default function Cadastro() {
         nomeCliente: '',
         dataNascimento: '',
         acesso: {
-            id: '',
+            id: 0,
             emailAcesso: '',
             username: '',
             senha: '',
