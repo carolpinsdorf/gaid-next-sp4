@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Acesso, ApiResponse } from '@/types';
+import { Acesso } from '@/types';
 import Link from 'next/link';
 import { MainLogin } from './styledLogin';
 import imgLogin from '@/../public/assets/hero2.png';
@@ -47,7 +47,7 @@ export default function Login() {
                 setMensagem('Usuário não encontrado. Por favor, cadastre-se.');
             }
         } catch (error) {
-            setMensagem('Erro ao conectar com a API.');
+            setMensagem(`Erro ao conectar com a API: ${error}`);
         }
     };
     

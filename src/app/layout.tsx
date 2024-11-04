@@ -3,7 +3,6 @@ import { Montserrat } from 'next/font/google';
 import localFont from 'next/font/local';
 import "./global.css";
 import Cabecalho from "@/components/Cabecalho";
-import Rodape from "@/components/Rodape";
 import StyledComponentsRegistry from '@/../lib/registry';
 
 

@@ -1,13 +1,27 @@
 import { useEffect, useRef } from 'react';
 
+interface WatsonAssistantOptions {
+  integrationID: string;
+  region: string;
+  serviceInstanceID: string;
+  clientVersion?: string;
+  onLoad: (instance: WatsonAssistantInstance) => Promise<void>;
+}
+
+interface WatsonAssistantInstance {
+  render: () => Promise<void>;
+  openWindow: () => void;
+  destroySession: () => void;
+}
+
 declare global {
   interface Window {
-    watsonAssistantChatOptions: any;
+    watsonAssistantChatOptions: WatsonAssistantOptions;
   }
 }
 
 const WatsonAssistant: React.FC = () => {
-  const instanceRef = useRef<any>(null);
+  const instanceRef = useRef<WatsonAssistantInstance | null>(null);
   const scriptRef = useRef<HTMLScriptElement | null>(null);
 
   useEffect(() => {
@@ -17,7 +31,7 @@ const WatsonAssistant: React.FC = () => {
           integrationID: "470f997b-7122-45aa-b4d9-f6068ad86db8",
           region: "au-syd",
           serviceInstanceID: "24f1b7e2-df1b-4180-8230-180b23979402",
-          onLoad: async (instance: any) => {
+          onLoad: async (instance: WatsonAssistantInstance) => {
             instanceRef.current = instance;
             await instance.render();
             instance.openWindow();

@@ -69,7 +69,7 @@ export default function Cadastro() {
                 setMensagem(`Erro no cadastro de cliente: ${clienteResponse.data.message}`);
             }
         } catch (error) {
-            setMensagem('Erro ao conectar com a API.');
+            setMensagem(`Erro ao conectar com a API: ${error}`);
         }
     };
 
